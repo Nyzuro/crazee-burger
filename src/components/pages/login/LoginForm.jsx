@@ -20,12 +20,12 @@ export default function LoginForm() {
       <h2>Connectez-vous</h2>
       <input
         type="text"
-        placeholder="Entrez votre prenom..."
+        placeholder="Entrez votre prenom"
         value={inputValue}
         onChange={handleChange}
         required
       />
-      <button>Accéder à votre espace</button>
+      <button>Accéder à mon espace</button>
     </form>
   );
 }
