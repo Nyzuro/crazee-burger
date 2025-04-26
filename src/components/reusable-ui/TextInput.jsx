@@ -17,7 +17,7 @@ const InputStyled = styled.div`
   display: flex;
   align-items: center;
 
-  .icon {
+  .input-icon {
     font-size: 15px;
     margin-right: 8px;
     color: #93a2b1;
