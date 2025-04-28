@@ -3,6 +3,7 @@ import { BsPersonCircle } from "react-icons/bs";
 import { IoChevronForward } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { theme } from "../../../theme";
 import PrimaryButton from "../../reusable-ui/PrimaryButton";
 import TextInput from "../../reusable-ui/TextInput";
 
@@ -49,44 +50,26 @@ const LoginFormStyled = styled.form`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2.5rem 2rem;
+  padding: 40px ${theme.spacing.lg};
   max-width: 500px;
   min-width: 400px;
   font-family: "Amatic SC", sans-serif;
 
-  .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
   hr {
-    border: 1.5px solid #f56a2c;
-    margin-bottom: 40px;
+    border: 1.5px solid ${theme.colors.loginLine};
+    margin-bottom: ${theme.gridUnit * 5}px;
     margin-top: 32px;
     width: 400px;
   }
 
   h1 {
-    color: white;
-    font-size: 48px;
+    color: ${theme.colors.white};
+    font-size: ${theme.fonts.size.P5};
   }
 
   h2 {
-    color: white;
-    font-size: 36px;
-  }
-
-  .button-with-icon:hover {
-    background-color: white;
-    border: 1px solid #ff9f1b;
-    color: #ff9f1b;
-    cursor: pointer;
-  }
-
-  .button-with-icon:active {
-    background-color: #ff9f1b;
-    color: white;
+    color: ${theme.colors.white};
+    font-size: ${theme.fonts.size.P4};
   }
 
   .button-icon {

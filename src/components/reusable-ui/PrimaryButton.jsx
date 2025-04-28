@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { theme } from "../../theme";
 
-export default function PrimaryButton({ label, Icon }) {
+export default function PrimaryButton({ label, Icon, ...extraProps }) {
   return (
     <PrimaryButtonStyled>
       <span>{label}</span>
@@ -21,4 +22,16 @@ const PrimaryButtonStyled = styled.button`
   border-radius: 5px;
   border-width: 0;
   color: white;
+
+  &:hover {
+    background-color: ${theme.colors.white};
+    border: 1px solid #ff9f1b;
+    color: #ff9f1b;
+    cursor: pointer;
+  }
+
+  &:active {
+    background-color: #ff9f1b;
+    color: white;
+  }
 `;
