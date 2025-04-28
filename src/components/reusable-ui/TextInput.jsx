@@ -34,5 +34,9 @@ const InputStyled = styled.div`
       background: ${theme.colors.white};
       color: ${theme.colors.greyMedium};
     }
+
+    &:focus-visible {
+      outline: none;
+    }
   }
 `;
