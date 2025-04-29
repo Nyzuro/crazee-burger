@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../../theme";
 import Logo from "../../reusable-ui/Logo";
 import NavbarRightSide from "./NavbarRightSide";
 
@@ -12,14 +13,10 @@ export default function Navbar({ username }) {
 }
 
 const NavbarStyled = styled.nav`
-  background: pink;
+  background: ${theme.colors.white};
   height: 10%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-
-  .left-side {
-    background-color: red;
-  }
 `;

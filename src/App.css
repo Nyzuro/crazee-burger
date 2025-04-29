@@ -5,6 +5,7 @@
 
 body,
 #root {
+  font-family: "Open Sans";
   width: 100vw;
   height: 100vh;
   /* 4. Add accessible line-height */
