@@ -25,7 +25,6 @@ const OrderPageStyled = styled.div`
   justify-content: center;
 
   .container {
-    background: red;
     height: 95%;
     width: 1400px;
     display: flex;

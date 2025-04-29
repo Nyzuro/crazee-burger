@@ -19,4 +19,6 @@ const NavbarStyled = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+  border-top-left-radius: ${theme.borderRadius.extraRound};
+  border-top-right-radius: ${theme.borderRadius.extraRound};
 `;
