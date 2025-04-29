@@ -4,8 +4,8 @@ import styled from "styled-components";
 export default function Navbar({ username }) {
   return (
     <NavbarStyled>
-      <div className="logo">Logo</div>
-      <div className="user">
+      <div className="left-side">Left Side</div>
+      <div className="right-side">
         <h1>Bonjour {username}</h1>
         <Link to={"/"}>
           <button>Deconnexion</button>
@@ -22,11 +22,11 @@ const NavbarStyled = styled.nav`
   justify-content: space-between;
   align-items: center;
 
-  .user {
+  .right-side {
     background-color: purple;
   }
 
-  .logo {
+  .left-side {
     background-color: red;
   }
 `;
