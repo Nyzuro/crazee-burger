@@ -4,13 +4,13 @@ import styled from "styled-components";
 export default function Navbar({ username }) {
   return (
     <NavbarStyled>
+      <div className="logo">Logo</div>
       <div className="user">
         <h1>Bonjour {username}</h1>
         <Link to={"/"}>
           <button>Deconnexion</button>
         </Link>
       </div>
-      <div className="logo">Logo</div>
     </NavbarStyled>
   );
 }
@@ -18,10 +18,15 @@ export default function Navbar({ username }) {
 const NavbarStyled = styled.nav`
   background: pink;
   height: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   .user {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
+    background-color: purple;
+  }
+
+  .logo {
+    background-color: red;
   }
 `;
