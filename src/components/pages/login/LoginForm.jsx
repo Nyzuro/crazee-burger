@@ -22,16 +22,16 @@ export default function LoginForm() {
 
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-      <div>
+      <div className="text">
         <h1>Bienvenue chez nous!</h1>
         <hr />
         <h2>Connectez-vous</h2>
       </div>
-      <div>
+      <div className="input-with-button">
         <TextInput
           value={inputValue}
           onChange={handleChange}
-          placeholder={"Entrez votre prenom"}
+          placeholder={"Entrez votre prénom"}
           required
           Icon={<BsPersonCircle className="input-icon" />}
         />
@@ -55,21 +55,29 @@ const LoginFormStyled = styled.form`
   min-width: 400px;
   font-family: "Amatic SC", sans-serif;
 
-  hr {
-    border: 1.5px solid ${theme.colors.loginLine};
-    margin-bottom: ${theme.gridUnit * 5}px;
-    margin-top: 32px;
-    width: 400px;
+  .text {
+    width: 100%;
+
+    hr {
+      border: 1.5px solid ${theme.colors.loginLine};
+      margin-bottom: ${theme.gridUnit * 5}px;
+      margin-top: 32px;
+      width: 100%;
+    }
+
+    h1 {
+      color: ${theme.colors.white};
+      font-size: ${theme.fonts.size.P5};
+    }
+
+    h2 {
+      color: ${theme.colors.white};
+      font-size: ${theme.fonts.size.P4};
+    }
   }
 
-  h1 {
-    color: ${theme.colors.white};
-    font-size: ${theme.fonts.size.P5};
-  }
-
-  h2 {
-    color: ${theme.colors.white};
-    font-size: ${theme.fonts.size.P4};
+  .input-with-button {
+    width: 100%;
   }
 
   .button-icon {
