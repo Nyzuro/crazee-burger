@@ -2,51 +2,53 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 
 export default function Product({ imageSource, title, price }) {
-  return (
-    <ProductStyled>
-      <div className="product">
-        <div className="image">
-          <img src={imageSource} alt={title} />
-        </div>
-        <div className="info-text">
-          <div className="title">{title}</div>
-          <div className="description">
-            <div className="price">{price}</div>
-            <button className="add-button">Ajouter</button>
-          </div>
-        </div>
-      </div>
-    </ProductStyled>
-  );
+	return (
+		<ProductStyled>
+			<div className="image">
+				<img src={imageSource} alt={title} />
+			</div>
+			<div className="info-text">
+				<div className="title">{title}</div>
+				<div className="description">
+					<div className="price">{price}</div>
+					<button className="add-button">Ajouter</button>
+				</div>
+			</div>
+		</ProductStyled>
+	);
 }
 
 const ProductStyled = styled.div`
-  .image {
-    border: 1px solid blue;
-    width: 100px;
-    height: auto;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
+	background-color: ${theme.colors.white};
+	box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+	width: 200px;
+	height: 300px;
 
-  .product {
-    background-color: ${theme.colors.white};
-    box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
-    width: 240px;
-    height: 330px;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 65% 1fr;
+	padding: 20px;
+	padding-bottom: 10px;
 
-    .info-text {
-      border: 1px solid red;
-    }
+	.image {
+		border: 1px solid blue;
+		margin-top: 30px;
+		img {
+			object-fit: contain;
+			width: 100%;
+			height: 100%;
+		}
+	}
 
-    .title {
-      border: 1px solid black;
-    }
+	.info-text {
+		border: 1px solid red;
+	}
 
-    .description {
-      border: 1px solid black;
-    }
-  }
+	.title {
+		border: 1px solid black;
+	}
+
+	.description {
+		border: 1px solid black;
+	}
 `;
