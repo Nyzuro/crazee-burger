@@ -6,12 +6,14 @@ import Product from "./Product";
 
 export default function Menu() {
 	const [menu, setMenu] = useState(fakeMenu2);
+	console.log(menu);
 
 	return (
 		<MenuStyled>
 			{menu.map((product) => {
 				return (
 					<Product
+						key={product.id}
 						imageSource={product.imageSource}
 						title={product.title}
 						price={product.price}

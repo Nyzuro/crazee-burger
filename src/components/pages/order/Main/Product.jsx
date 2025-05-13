@@ -53,6 +53,10 @@ const ProductStyled = styled.div`
 			font-family: "Amatic SC", sans-serif;
 			font-size: 36px;
 			font-weight: 700;
+
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
 
 		.description {
