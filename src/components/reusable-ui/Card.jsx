@@ -1,26 +1,25 @@
 import styled from "styled-components";
-import { formatPrice } from "../../../.././utils/maths";
-import { theme } from "../../../../theme";
-import PrimaryButton from "../../../reusable-ui/PrimaryButton";
+import { theme } from "../../theme";
+import PrimaryButton from "./PrimaryButton";
 
-export default function Product({ imageSource, title, price }) {
+export default function Card({ imageSource, title, leftDescription }) {
 	return (
-		<ProductStyled>
+		<CardStyled>
 			<div className="image">
 				<img src={imageSource} alt={title} />
 			</div>
 			<div className="info-text">
 				<div className="title">{title}</div>
 				<div className="description">
-					<div className="price">{formatPrice(price)}</div>
+					<div className="left-description">{leftDescription}</div>
 					<PrimaryButton className="add-button" label={"Ajouter"} />
 				</div>
 			</div>
-		</ProductStyled>
+		</CardStyled>
 	);
 }
 
-const ProductStyled = styled.div`
+const CardStyled = styled.div`
 	background-color: ${theme.colors.white};
 	box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
 	width: 200px;
