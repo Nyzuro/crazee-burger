@@ -24,17 +24,17 @@ const CardStyled = styled.div`
 	box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
 	width: 200px;
 	height: 300px;
-	padding: 20px;
+	padding: ${theme.spacing.md};
 	padding-bottom: 10px;
 	display: grid;
 	grid-template-rows: 65% 1fr;
-	border-radius: 15px;
+	border-radius: ${theme.borderRadius.extraRound};
 
 	.image {
 		width: 100%;
 		height: auto;
 		margin-top: 30px;
-		margin-bottom: 20px;
+		margin-bottom: ${theme.spacing.md};
 
 		img {
 			object-fit: contain;
@@ -51,8 +51,8 @@ const CardStyled = styled.div`
 		.title {
 			color: #17161a;
 			font-family: "Amatic SC", sans-serif;
-			font-size: 36px;
-			font-weight: 700;
+			font-size: ${theme.fonts.size.P4};
+			font-weight: ${theme.fonts.weights.bold};
 
 			white-space: nowrap;
 			overflow: hidden;
@@ -66,7 +66,7 @@ const CardStyled = styled.div`
 			color: #ffa01b;
 
 			.add-button {
-				padding: 12px;
+				padding: ${theme.spacing.sm};
 				font-size: 11px;
 			}
 		}
