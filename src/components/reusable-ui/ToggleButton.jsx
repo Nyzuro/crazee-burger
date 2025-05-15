@@ -7,7 +7,6 @@ export default function ToggleButton({
 	labelIfChecked = "Fermer",
 	labelIfUnchecked = "Ouvrir",
 }) {
-	console.log();
 	return (
 		<ToggleButtonStyled>
 			<input
