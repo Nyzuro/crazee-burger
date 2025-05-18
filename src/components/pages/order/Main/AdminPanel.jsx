@@ -29,7 +29,9 @@ export default function AdminPanel() {
 					Modifier un produit
 				</button>
 			</div>
-			<div className="panel">Panel</div>
+			<div className="panel">
+				{activePanel === "add" ? "Ajouter un produit" : "Modifier un produit"}
+			</div>
 		</AdminPanelStyled>
 	);
 }
@@ -89,6 +91,8 @@ const AdminPanelStyled = styled.div`
 	}
 	.panel {
 		height: 250px;
-		background-color: lightblue;
+		padding: 17px 21px;
+		border: 1px solid #e4e5e9;
+		background-color: ${theme.colors.white};
 	}
 `;
