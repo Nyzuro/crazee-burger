@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { FiChevronDown } from "react-icons/fi";
 import { MdModeEditOutline } from "react-icons/md";
@@ -5,17 +6,25 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 
 export default function AdminPanel() {
+	const [activePanel, setActivePanel] = useState("add");
+
 	return (
 		<AdminPanelStyled>
 			<div className="navigation">
-				<button className="button-white">
+				<button className="white-theme">
 					<FiChevronDown />
 				</button>
-				<button className="button-white">
+				<button
+					className={activePanel === "add" ? "dark-theme" : "white-theme"}
+					onClick={() => setActivePanel("add")}
+				>
 					<AiOutlinePlus />
 					Ajouter un produit
 				</button>
-				<button className="button-white">
+				<button
+					className={activePanel === "edit" ? "dark-theme" : "white-theme"}
+					onClick={() => setActivePanel("edit")}
+				>
 					<MdModeEditOutline />
 					Modifier un produit
 				</button>
@@ -36,7 +45,7 @@ const AdminPanelStyled = styled.div`
 		flex-direction: row;
 		gap: 1px;
 
-		.button-white {
+		.white-theme {
 			padding: 13px 22px;
 			border: 1px solid ${theme.colors.greyLight};
 			border-bottom: 2px solid ${theme.colors.greyLight};
@@ -57,23 +66,29 @@ const AdminPanelStyled = styled.div`
 			}
 		}
 
-		/* .add-product {
-			background-color: ${theme.colors.background_dark};
-			color: ${theme.colors.white};
-			padding: 10px 22px;
-			font-size: ${theme.fonts.size.P0};
+		.dark-theme {
+			padding: 13px 22px;
 			border: 1px solid ${theme.colors.background_dark};
-			border-bottom: 2px;
+			border-bottom: 2px solid ${theme.colors.background_dark};
+			color: ${theme.colors.white};
+			background-color: ${theme.colors.background_dark};
 			border-top-right-radius: ${theme.borderRadius.round};
 			border-top-left-radius: ${theme.borderRadius.round};
+			font-size: ${theme.fonts.size.P0};
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: 13px;
 
-			.icon-plus {
-				margin-right: 13px;
+			&:hover {
+				text-decoration: underline;
+				cursor: pointer;
+				border-bottom: none;
 			}
-		} */
+		}
 	}
 	.panel {
 		height: 250px;
-		background-color: yellow;
+		background-color: lightblue;
 	}
 `;
