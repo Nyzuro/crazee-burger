@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import OrderContext from "../../../context/OrderContext";
+import { fakeMenu2 } from "../../../fakeData/fakeMenu";
 import { theme } from "../../../theme";
 import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
@@ -9,10 +10,13 @@ import Navbar from "./Navbar/Navbar";
 export default function OrderPage() {
 	const { username } = useParams();
 	const [isModeAdmin, setIsModeAdmin] = useState(false);
+	const [menu, setMenu] = useState(fakeMenu2);
 
 	const orderContextValue = {
 		isModeAdmin,
 		setIsModeAdmin,
+		menu,
+		isModeAdmin,
 	};
 
 	return (
