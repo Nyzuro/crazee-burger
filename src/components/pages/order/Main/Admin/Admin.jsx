@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import styled from "styled-components";
-import OrderContext from "../../../../context/OrderContext";
-import { theme } from "../../../../theme";
+import OrderContext from "../../../../../context/OrderContext";
+import { theme } from "../../../../../theme";
 import AddProductButton from "./AddProductButton";
 import EditProductButton from "./EditProductButton";
 
-export default function AdminPanel() {
+export default function Admin() {
 	const [activePanel, setActivePanel] = useState("add");
 	const [isAdminPanelOpen, setIsAdminPanelOpen] = useState(true);
 	const { isModeAdmin } = useContext(OrderContext);
@@ -14,7 +14,7 @@ export default function AdminPanel() {
 	return (
 		<>
 			{isModeAdmin && (
-				<AdminPanelStyled>
+				<AdminStyled>
 					<div className="navigation">
 						<button
 							className={isAdminPanelOpen ? "white-theme" : "dark-theme"}
@@ -45,13 +45,13 @@ export default function AdminPanel() {
 								: "Modifier un produit"}
 						</div>
 					)}
-				</AdminPanelStyled>
+				</AdminStyled>
 			)}
 		</>
 	);
 }
 
-const AdminPanelStyled = styled.div`
+const AdminStyled = styled.div`
 	width: 100%;
 	position: absolute;
 	bottom: 0;
@@ -112,5 +112,6 @@ const AdminPanelStyled = styled.div`
 		padding: 17px 21px;
 		border: 1px solid #e4e5e9;
 		background-color: ${theme.colors.white};
+		box-shadow: ${theme.shadows.subtle};
 	}
 `;

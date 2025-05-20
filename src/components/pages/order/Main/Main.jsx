@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
-import AdminPanel from "./AdminPanel";
+import Admin from "./Admin/Admin";
 import Menu from "./Menu";
 
 export default function Main() {
@@ -8,7 +8,7 @@ export default function Main() {
 		<MainStyled>
 			{/* <div className="basket">Basket</div> */}
 			<div className="menu-and-admin">
-				<AdminPanel className="admin" />
+				<Admin className="admin" />
 				<Menu />
 			</div>
 		</MainStyled>

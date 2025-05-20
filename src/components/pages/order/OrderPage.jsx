@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu2 } from "../../../fakeData/fakeMenu";
@@ -8,7 +7,6 @@ import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
 
 export default function OrderPage() {
-	const { username } = useParams();
 	const [isModeAdmin, setIsModeAdmin] = useState(false);
 	const [menu, setMenu] = useState(fakeMenu2);
 
@@ -23,7 +21,7 @@ export default function OrderPage() {
 		<OrderPageStyled>
 			<div className="container">
 				<OrderContext.Provider value={orderContextValue}>
-					<Navbar username={username} />
+					<Navbar />
 					<Main />
 				</OrderContext.Provider>
 			</div>
