@@ -50,10 +50,13 @@ export default function AdminPanel() {
 		</>
 	);
 }
+
 const AdminPanelStyled = styled.div`
+	width: 100%;
 	position: absolute;
 	bottom: 0;
-	width: 100%;
+	left: 0;
+	right: 0;
 
 	.navigation {
 		padding-left: 70px;
