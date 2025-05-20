@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
-import { FiChevronDown } from "react-icons/fi";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { MdModeEditOutline } from "react-icons/md";
 import styled from "styled-components";
 import OrderContext from "../../../../context/OrderContext";
@@ -8,6 +8,7 @@ import { theme } from "../../../../theme";
 
 export default function AdminPanel() {
 	const [activePanel, setActivePanel] = useState("add");
+	const [isAdminPanelOpen, setIsAdminPanelOpen] = useState(true);
 	const { isModeAdmin } = useContext(OrderContext);
 
 	return (
@@ -15,8 +16,11 @@ export default function AdminPanel() {
 			{isModeAdmin && (
 				<AdminPanelStyled>
 					<div className="navigation">
-						<button className="white-theme">
-							<FiChevronDown />
+						<button
+							className={isAdminPanelOpen ? "white-theme" : "dark-theme"}
+							onClick={() => setIsAdminPanelOpen(!isAdminPanelOpen)}
+						>
+							{isAdminPanelOpen ? <FiChevronDown /> : <FiChevronUp />}
 						</button>
 
 						<button
@@ -40,11 +44,13 @@ export default function AdminPanel() {
 						</button>
 					</div>
 
-					<div className="panel">
-						{activePanel === "add"
-							? "Ajouter un produit"
-							: "Modifier un produit"}
-					</div>
+					{isAdminPanelOpen && (
+						<div className="panel">
+							{activePanel === "add"
+								? "Ajouter un produit"
+								: "Modifier un produit"}
+						</div>
+					)}
 				</AdminPanelStyled>
 			)}
 		</>
