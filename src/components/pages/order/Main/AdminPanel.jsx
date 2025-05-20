@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
-import { AiOutlinePlus } from "react-icons/ai";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import { MdModeEditOutline } from "react-icons/md";
 import styled from "styled-components";
 import OrderContext from "../../../../context/OrderContext";
 import { theme } from "../../../../theme";
+import AddProductButton from "./AddProductButton";
+import EditProductButton from "./EditProductButton";
 
 export default function AdminPanel() {
 	const [activePanel, setActivePanel] = useState("add");
@@ -23,25 +23,19 @@ export default function AdminPanel() {
 							{isAdminPanelOpen ? <FiChevronDown /> : <FiChevronUp />}
 						</button>
 
-						<button
-							className={
-								activePanel === "add" ? "dark-theme" : "white-theme"
-							}
-							onClick={() => setActivePanel("add")}
-						>
-							<AiOutlinePlus />
-							Ajouter un produit
-						</button>
+						<AddProductButton
+							activePanel={activePanel}
+							setActivePanel={setActivePanel}
+							isAdminPanelOpen={isAdminPanelOpen}
+							setIsAdminPanelOpen={setIsAdminPanelOpen}
+						/>
 
-						<button
-							className={
-								activePanel === "edit" ? "dark-theme" : "white-theme"
-							}
-							onClick={() => setActivePanel("edit")}
-						>
-							<MdModeEditOutline />
-							Modifier un produit
-						</button>
+						<EditProductButton
+							activePanel={activePanel}
+							setActivePanel={setActivePanel}
+							isAdminPanelOpen={isAdminPanelOpen}
+							setIsAdminPanelOpen={setIsAdminPanelOpen}
+						/>
 					</div>
 
 					{isAdminPanelOpen && (
@@ -58,8 +52,8 @@ export default function AdminPanel() {
 }
 const AdminPanelStyled = styled.div`
 	position: absolute;
-	width: 100%;
 	bottom: 0;
+	width: 100%;
 
 	.navigation {
 		padding-left: 70px;
@@ -109,6 +103,7 @@ const AdminPanelStyled = styled.div`
 			}
 		}
 	}
+
 	.panel {
 		height: 250px;
 		padding: 17px 21px;
