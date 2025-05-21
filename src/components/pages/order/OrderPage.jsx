@@ -8,6 +8,9 @@ import Navbar from "./Navbar/Navbar";
 
 export default function OrderPage() {
 	const [isModeAdmin, setIsModeAdmin] = useState(false);
+	const [isCollapsed, setIsCollapsed] = useState(false);
+	const [isAddSelected, setIsAddSelected] = useState(true);
+	const [isEditSelected, setIsEditSelected] = useState(false);
 	const [menu, setMenu] = useState(fakeMenu2);
 
 	const orderContextValue = {
@@ -15,6 +18,13 @@ export default function OrderPage() {
 		setIsModeAdmin,
 		menu,
 		isModeAdmin,
+		isCollapsed,
+		setIsCollapsed,
+		isAddSelected,
+		setIsAddSelected,
+		isEditSelected,
+		setIsEditSelected,
+		setIsModeAdmin,
 	};
 
 	return (

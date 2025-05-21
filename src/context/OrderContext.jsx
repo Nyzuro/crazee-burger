@@ -5,4 +5,10 @@ export default createContext({
 	setIsModeAdmin: () => {},
 	menu: {},
 	setMenu: () => {},
+	isCollapsed: false,
+	setIsCollapsed: () => {},
+	isAddSelected: false,
+	setIsAddSelected: () => {},
+	isEditSelected: false,
+	setIsEditSelected: () => {},
 });

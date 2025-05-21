@@ -1,26 +1,19 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../context/OrderContext";
 import AdminPanel from "./AdminPanel";
 import AdminTabs from "./AdminTabs";
 
 export default function Admin() {
-	const [activePanel, setActivePanel] = useState("add");
-	const [isCollapsed, setIsCollapsed] = useState(false);
-	const { isModeAdmin } = useContext(OrderContext);
+	const { isModeAdmin, isCollapsed } = useContext(OrderContext);
 
 	return (
 		<>
 			{isModeAdmin && (
 				<AdminStyled>
-					<AdminTabs
-						isCollapsed={isCollapsed}
-						setIsCollapsed={setIsCollapsed}
-						activePanel={activePanel}
-						setActivePanel={setActivePanel}
-					/>
+					<AdminTabs />
 
-					{!isCollapsed && <AdminPanel activePanel={activePanel} />}
+					{!isCollapsed && <AdminPanel />}
 				</AdminStyled>
 			)}
 		</>
