@@ -1,50 +1,26 @@
 import { useContext, useState } from "react";
-import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import styled from "styled-components";
 import OrderContext from "../../../../../context/OrderContext";
-import { theme } from "../../../../../theme";
-import AddProductButton from "./AddProductButton";
-import EditProductButton from "./EditProductButton";
+import AdminPanel from "./AdminPanel";
+import AdminTabs from "./AdminTabs";
 
 export default function Admin() {
 	const [activePanel, setActivePanel] = useState("add");
-	const [isAdminPanelOpen, setIsAdminPanelOpen] = useState(true);
+	const [isCollapsed, setIsCollapsed] = useState(false);
 	const { isModeAdmin } = useContext(OrderContext);
 
 	return (
 		<>
 			{isModeAdmin && (
 				<AdminStyled>
-					<div className="navigation">
-						<button
-							className={isAdminPanelOpen ? "white-theme" : "dark-theme"}
-							onClick={() => setIsAdminPanelOpen(!isAdminPanelOpen)}
-						>
-							{isAdminPanelOpen ? <FiChevronDown /> : <FiChevronUp />}
-						</button>
+					<AdminTabs
+						isCollapsed={isCollapsed}
+						setIsCollapsed={setIsCollapsed}
+						activePanel={activePanel}
+						setActivePanel={setActivePanel}
+					/>
 
-						<AddProductButton
-							activePanel={activePanel}
-							setActivePanel={setActivePanel}
-							isAdminPanelOpen={isAdminPanelOpen}
-							setIsAdminPanelOpen={setIsAdminPanelOpen}
-						/>
-
-						<EditProductButton
-							activePanel={activePanel}
-							setActivePanel={setActivePanel}
-							isAdminPanelOpen={isAdminPanelOpen}
-							setIsAdminPanelOpen={setIsAdminPanelOpen}
-						/>
-					</div>
-
-					{isAdminPanelOpen && (
-						<div className="panel">
-							{activePanel === "add"
-								? "Ajouter un produit"
-								: "Modifier un produit"}
-						</div>
-					)}
+					{!isCollapsed && <AdminPanel activePanel={activePanel} />}
 				</AdminStyled>
 			)}
 		</>
@@ -57,61 +33,4 @@ const AdminStyled = styled.div`
 	bottom: 0;
 	left: 0;
 	right: 0;
-
-	.navigation {
-		padding-left: 70px;
-		display: flex;
-		flex-direction: row;
-		gap: 1px;
-
-		.white-theme {
-			padding: 13px 22px;
-			border: 1px solid ${theme.colors.greyLight};
-			border-bottom: 2px solid ${theme.colors.greyLight};
-			color: ${theme.colors.greySemiDark};
-			background-color: ${theme.colors.white};
-			border-top-right-radius: ${theme.borderRadius.round};
-			border-top-left-radius: ${theme.borderRadius.round};
-			font-size: ${theme.fonts.size.P0};
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			gap: 13px;
-
-			&:hover {
-				text-decoration: underline;
-				cursor: pointer;
-				border-bottom: none;
-			}
-		}
-
-		.dark-theme {
-			padding: 13px 22px;
-			border: 1px solid ${theme.colors.background_dark};
-			border-bottom: 2px solid ${theme.colors.background_dark};
-			color: ${theme.colors.white};
-			background-color: ${theme.colors.background_dark};
-			border-top-right-radius: ${theme.borderRadius.round};
-			border-top-left-radius: ${theme.borderRadius.round};
-			font-size: ${theme.fonts.size.P0};
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			gap: 13px;
-
-			&:hover {
-				text-decoration: underline;
-				cursor: pointer;
-				border-bottom: none;
-			}
-		}
-	}
-
-	.panel {
-		height: 250px;
-		padding: 17px 21px;
-		border: 1px solid #e4e5e9;
-		background-color: ${theme.colors.white};
-		box-shadow: ${theme.shadows.subtle};
-	}
 `;
