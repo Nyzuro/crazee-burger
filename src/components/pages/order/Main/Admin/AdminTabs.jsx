@@ -1,64 +1,37 @@
 import { useContext } from "react";
-import { AiOutlinePlus } from "react-icons/ai";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import { MdModeEditOutline } from "react-icons/md";
 import styled from "styled-components";
 import OrderContext from "../../../../../context/OrderContext";
 import { theme } from "../../../../../theme";
 import Tab from "../../../../reusable-ui/Tab";
+import { getTabsConfig } from "./getTabsConfig";
 
 export default function AdminTabs({}) {
-	const {
-		isCollapsed,
-		setIsCollapsed,
-		isAddSelected,
-		setIsAddSelected,
-		isEditSelected,
-		setIsEditSelected,
-	} = useContext(OrderContext);
+	const { isCollapsed, setIsCollapsed, currentTabSelected, setCurrentTabSelected } =
+		useContext(OrderContext);
 
-	const selectAddTab = () => {
+	const selectTab = (tabSelected) => {
 		setIsCollapsed(false);
-		setIsAddSelected(true);
-		setIsEditSelected(false);
+		setCurrentTabSelected(tabSelected);
 	};
 
-	const selectEditTab = () => {
-		setIsCollapsed(false);
-		setIsEditSelected(true);
-		setIsAddSelected(false);
-	};
-
-	const tabsConfig = [
-		{
-			label: "",
-			className: isCollapsed ? "is-active" : "",
-			Icon: isCollapsed ? <FiChevronDown /> : <FiChevronUp />,
-			onClick: () => setIsCollapsed(!isCollapsed),
-		},
-		{
-			label: "Ajouter un produit",
-			className: isAddSelected ? "is-active :" : "",
-			Icon: <AiOutlinePlus />,
-			onClick: selectAddTab,
-		},
-		{
-			label: "Modifier un produit",
-			className: isEditSelected ? "is-active :" : "",
-			Icon: <MdModeEditOutline />,
-			onClick: selectEditTab,
-		},
-	];
+	const tabs = getTabsConfig(currentTabSelected);
 
 	return (
 		<AdminTabsStyled>
-			{tabsConfig.map((tab) => {
+			<Tab
+				className={isCollapsed ? "is-active" : ""}
+				Icon={isCollapsed ? <FiChevronDown /> : <FiChevronUp />}
+				onClick={() => setIsCollapsed(!isCollapsed)}
+			/>
+
+			{tabs.map((tab) => {
 				return (
 					<Tab
 						label={tab.label}
 						className={tab.className}
 						Icon={tab.Icon}
-						onClick={tab.onClick}
+						onClick={() => selectTab(tab.index)}
 					/>
 				);
 			})}

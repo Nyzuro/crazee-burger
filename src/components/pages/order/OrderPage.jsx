@@ -11,6 +11,7 @@ export default function OrderPage() {
 	const [isCollapsed, setIsCollapsed] = useState(false);
 	const [isAddSelected, setIsAddSelected] = useState(true);
 	const [isEditSelected, setIsEditSelected] = useState(false);
+	const [currentTabSelected, setCurrentTabSelected] = useState("add");
 	const [menu, setMenu] = useState(fakeMenu2);
 
 	const orderContextValue = {
@@ -25,6 +26,8 @@ export default function OrderPage() {
 		isEditSelected,
 		setIsEditSelected,
 		setIsModeAdmin,
+		currentTabSelected,
+		setCurrentTabSelected,
 	};
 
 	return (
