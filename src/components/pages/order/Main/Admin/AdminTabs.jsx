@@ -29,27 +29,39 @@ export default function AdminTabs({}) {
 		setIsAddSelected(false);
 	};
 
+	const tabsConfig = [
+		{
+			label: "",
+			className: isCollapsed ? "is-active" : "",
+			Icon: isCollapsed ? <FiChevronDown /> : <FiChevronUp />,
+			onClick: () => setIsCollapsed(!isCollapsed),
+		},
+		{
+			label: "Ajouter un produit",
+			className: isAddSelected ? "is-active :" : "",
+			Icon: <AiOutlinePlus />,
+			onClick: selectAddTab,
+		},
+		{
+			label: "Modifier un produit",
+			className: isEditSelected ? "is-active :" : "",
+			Icon: <MdModeEditOutline />,
+			onClick: selectEditTab,
+		},
+	];
+
 	return (
 		<AdminTabsStyled>
-			<Tab
-				className={isCollapsed ? "is-active" : ""}
-				Icon={isCollapsed ? <FiChevronDown /> : <FiChevronUp />}
-				onClick={() => setIsCollapsed(!isCollapsed)}
-			/>
-
-			<Tab
-				className={isAddSelected ? "is-active :" : ""}
-				Icon={<AiOutlinePlus />}
-				label={"Ajouter un produit"}
-				onClick={selectAddTab}
-			/>
-
-			<Tab
-				className={isEditSelected ? "is-active :" : ""}
-				Icon={<MdModeEditOutline />}
-				label={"Modifier un produit"}
-				onClick={selectEditTab}
-			/>
+			{tabsConfig.map((tab) => {
+				return (
+					<Tab
+						label={tab.label}
+						className={tab.className}
+						Icon={tab.Icon}
+						onClick={tab.onClick}
+					/>
+				);
+			})}
 		</AdminTabsStyled>
 	);
 }
