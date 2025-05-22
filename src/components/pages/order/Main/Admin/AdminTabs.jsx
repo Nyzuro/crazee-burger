@@ -15,7 +15,7 @@ export default function AdminTabs({}) {
 		setCurrentTabSelected(tabSelected);
 	};
 
-	const tabs = getTabsConfig(currentTabSelected);
+	const tabs = getTabsConfig();
 
 	return (
 		<AdminTabsStyled>
