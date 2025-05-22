@@ -21,7 +21,7 @@ export default function Card({ imageSource, title, leftDescription }) {
 
 const CardStyled = styled.div`
 	background-color: ${theme.colors.white};
-	box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+	box-shadow: ${theme.shadows.medium};
 	width: 200px;
 	height: 300px;
 	padding: ${theme.spacing.md};

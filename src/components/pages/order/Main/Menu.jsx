@@ -26,7 +26,7 @@ export default function Menu() {
 
 const MenuStyled = styled.div`
 	background: ${theme.colors.background_white};
-	box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+	box-shadow: ${theme.shadows.strong};
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
