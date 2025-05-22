@@ -1,14 +1,18 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import OrderContext from "../../../../context/OrderContext";
 import { theme } from "../../../../theme";
 import Admin from "./Admin/Admin";
 import Menu from "./Menu";
 
 export default function Main() {
+	const { isModeAdmin } = useContext(OrderContext);
+
 	return (
 		<MainStyled>
 			{/* <div className="basket">Basket</div> */}
 			<div className="menu-and-admin">
-				<Admin className="admin" />
+				{isModeAdmin && <Admin className="admin" />}
 				<Menu />
 			</div>
 		</MainStyled>

@@ -5,18 +5,14 @@ import AdminPanel from "./AdminPanel";
 import AdminTabs from "./AdminTabs";
 
 export default function Admin() {
-	const { isModeAdmin, isCollapsed } = useContext(OrderContext);
+	const { isCollapsed } = useContext(OrderContext);
 
 	return (
-		<>
-			{isModeAdmin && (
-				<AdminStyled>
-					<AdminTabs />
+		<AdminStyled>
+			<AdminTabs />
 
-					{!isCollapsed && <AdminPanel />}
-				</AdminStyled>
-			)}
-		</>
+			{!isCollapsed && <AdminPanel />}
+		</AdminStyled>
 	);
 }
 
