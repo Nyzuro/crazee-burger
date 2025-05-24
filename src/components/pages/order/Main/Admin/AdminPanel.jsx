@@ -12,14 +12,15 @@ export default function AdminPanel() {
 
 	return (
 		<>
-			<AdminPanelStyled>{tabSelected && tabSelected.label}</AdminPanelStyled>
+			<AdminPanelStyled>{tabSelected && tabSelected.content}</AdminPanelStyled>
 		</>
 	);
 }
 
 const AdminPanelStyled = styled.div`
 	height: 250px;
-	padding: 17px 21px;
+	padding: 30px 0px 0px 70px;
+
 	border: 1px solid #e4e5e9;
 	background-color: ${theme.colors.white};
 	box-shadow: ${theme.shadows.subtle};
