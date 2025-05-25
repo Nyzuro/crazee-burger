@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../context/OrderContext";
-import { fakeMenu2 } from "../../../fakeData/fakeMenu";
+import { fakeMenu } from "../../../fakeData/fakeMenu";
 import { theme } from "../../../theme";
 import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
@@ -10,12 +10,13 @@ export default function OrderPage() {
 	const [isModeAdmin, setIsModeAdmin] = useState(false);
 	const [isCollapsed, setIsCollapsed] = useState(false);
 	const [currentTabSelected, setCurrentTabSelected] = useState("add");
-	const [menu, setMenu] = useState(fakeMenu2);
+	const [menu, setMenu] = useState(fakeMenu.MEDIUM);
 
 	const orderContextValue = {
 		isModeAdmin,
 		setIsModeAdmin,
 		menu,
+		setMenu,
 		isModeAdmin,
 		isCollapsed,
 		setIsCollapsed,

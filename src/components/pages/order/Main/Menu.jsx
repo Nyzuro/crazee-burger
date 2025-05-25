@@ -14,7 +14,11 @@ export default function Menu() {
 				return (
 					<Card
 						key={id}
-						imageSource={imageSource}
+						imageSource={
+							imageSource
+								? imageSource
+								: "../../../../../public/images/coming-soon.png"
+						}
 						title={title}
 						leftDescription={formatPrice(price)}
 					/>
