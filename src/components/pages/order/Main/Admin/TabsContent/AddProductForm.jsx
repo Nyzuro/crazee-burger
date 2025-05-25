@@ -1,21 +1,33 @@
 import { useState } from "react";
 import { BsFillCameraFill } from "react-icons/bs";
 import { FaHamburger } from "react-icons/fa";
+import { FiCheckCircle } from "react-icons/fi";
 import { MdOutlineEuro } from "react-icons/md";
 import styled from "styled-components";
 import { theme } from "../../../../../../theme";
 import PrimaryButton from "../../../../../reusable-ui/PrimaryButton";
 import TextInput from "../../../../../reusable-ui/TextInput";
 
-export default function AddProductContent() {
+export default function AddProductForm() {
 	const [prouctInputValue, setProuctInputValue] = useState("");
 	const [imageInputValue, setImageInputValue] = useState("");
 	const [priceInputValue, setPriceInputValue] = useState("");
+	const [isSubmittedForm, setIsSubmittedForm] = useState(false);
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+
+		setIsSubmittedForm(true);
+
+		setTimeout(() => {
+			setIsSubmittedForm(false);
+		}, 2000);
+	};
 
 	return (
-		<AddProductContentStyles>
-			<div className="product-image">Aucune image</div>
-			<form action="submit" className="product-form">
+		<AddProductFormStyles>
+			<div className="preview-image">Aucune image</div>
+			<form action="submit" className="product-info" onSubmit={handleSubmit}>
 				<TextInput
 					value={prouctInputValue}
 					onChange={(event) => {
@@ -48,22 +60,30 @@ export default function AddProductContent() {
 					placeholder={"Prix"}
 				/>
 
-				<PrimaryButton
-					label={"Ajouter un nouveau produit au menu"}
-					className={"add-product-button"}
-				/>
+				<div className="button-with-message">
+					<PrimaryButton
+						label={"Ajouter un nouveau produit au menu"}
+						className={"add-product-button"}
+					/>
+					{isSubmittedForm && (
+						<div className="successMessage">
+							<FiCheckCircle />
+							Ajouté avec succès !
+						</div>
+					)}
+				</div>
 			</form>
-		</AddProductContentStyles>
+		</AddProductFormStyles>
 	);
 }
 
-const AddProductContentStyles = styled.div`
+const AddProductFormStyles = styled.div`
 	width: 70%;
 	display: grid;
 	grid-template-columns: 215px 1fr;
 	gap: 20px;
 
-	.product-image {
+	.preview-image {
 		color: ${theme.colors.greySemiDark};
 		border: 1px solid ${theme.colors.greyLight};
 		border-radius: ${theme.borderRadius.round};
@@ -110,7 +130,22 @@ const AddProductContentStyles = styled.div`
 		}
 
 		&:active {
-			background-color: ${theme.colors.success};
+			background-color: ${theme.colors.white};
+			color: ${theme.colors.success};
+			border: 1px solid ${theme.colors.success};
 		}
+	}
+
+	.button-with-message {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 5px;
+	}
+
+	.successMessage {
+		color: ${theme.colors.success};
+		display: flex;
+		align-items: center;
 	}
 `;
