@@ -10,13 +10,25 @@ import PrimaryButton from "../../../../../reusable-ui/PrimaryButton";
 import TextInput from "../../../../../reusable-ui/TextInput";
 
 export default function AddForm() {
-	const [nameInputValue, setNameInputValue] = useState("");
-	const [imageInputValue, setImageInputValue] = useState("");
-	const [priceInputValue, setPriceInputValue] = useState("");
 	const [isSubmittedForm, setIsSubmittedForm] = useState(false);
+	const [formData, setFormData] = useState({
+		name: "",
+		image: "",
+		price: "",
+	});
+
 	const { menu, setMenu } = useContext(OrderContext);
 
+	const handleInputChange = (event) => {
+		const { name, value } = event.target;
+		setFormData((prevFormData) => ({
+			...prevFormData,
+			[name]: value,
+		}));
+	};
+
 	const handleSubmit = (event) => {
+		console.log(formData);
 		event.preventDefault();
 		CreateNewProduct();
 
@@ -25,13 +37,19 @@ export default function AddForm() {
 		setTimeout(() => {
 			setIsSubmittedForm(false);
 		}, 2000);
+
+		setFormData({
+			name: "",
+			image: "",
+			price: "",
+		});
 	};
 
 	const CreateNewProduct = () => {
 		const newProduct = {
-			imageSource: imageInputValue,
-			title: nameInputValue,
-			price: priceInputValue,
+			imageSource: formData.image,
+			title: formData.name,
+			price: formData.price,
 		};
 
 		const updatedMenu = [newProduct, ...menu];
@@ -42,10 +60,10 @@ export default function AddForm() {
 	return (
 		<AddFormStyled action="submit" className="product-info" onSubmit={handleSubmit}>
 			<TextInput
-				value={nameInputValue}
-				onChange={(event) => {
-					setNameInputValue(event.target.value);
-				}}
+				type="text"
+				name="name"
+				value={formData.name}
+				onChange={handleInputChange}
 				Icon={<FaHamburger className="icon" />}
 				className="add-product-input"
 				placeholder={"Nom du produit (ex: Super Burger)"}
@@ -53,10 +71,9 @@ export default function AddForm() {
 
 			<TextInput
 				type="url"
-				value={imageInputValue}
-				onChange={(event) => {
-					setImageInputValue(event.target.value);
-				}}
+				name="image"
+				value={formData.image}
+				onChange={handleInputChange}
 				Icon={<BsFillCameraFill className="icon" />}
 				className="add-product-input"
 				placeholder={
@@ -65,10 +82,10 @@ export default function AddForm() {
 			/>
 
 			<TextInput
-				value={priceInputValue}
-				onChange={(event) => {
-					setPriceInputValue(event.target.value);
-				}}
+				type="text"
+				name="price"
+				value={formData.price}
+				onChange={handleInputChange}
 				Icon={<MdOutlineEuro className="icon" />}
 				className="add-product-input"
 				placeholder={"Prix"}
