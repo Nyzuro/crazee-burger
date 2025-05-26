@@ -9,13 +9,8 @@ import { theme } from "../../../../../../theme";
 import PrimaryButton from "../../../../../reusable-ui/PrimaryButton";
 import TextInput from "../../../../../reusable-ui/TextInput";
 
-export default function AddForm() {
+export default function AddForm({ formData, setFormData }) {
 	const [isSubmittedForm, setIsSubmittedForm] = useState(false);
-	const [formData, setFormData] = useState({
-		name: "",
-		image: "",
-		price: "",
-	});
 
 	const { menu, setMenu } = useContext(OrderContext);
 
@@ -28,7 +23,6 @@ export default function AddForm() {
 	};
 
 	const handleSubmit = (event) => {
-		console.log(formData);
 		event.preventDefault();
 		CreateNewProduct();
 
