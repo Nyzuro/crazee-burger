@@ -1,10 +1,20 @@
+import { useContext } from "react";
+import { TiDelete } from "react-icons/ti";
 import styled from "styled-components";
+import OrderContext from "../../context/OrderContext";
 import { theme } from "../../theme";
 import PrimaryButton from "./PrimaryButton";
 
 export default function Card({ imageSource, title, leftDescription }) {
+	const { isModeAdmin } = useContext(OrderContext);
+
 	return (
 		<CardStyled>
+			{isModeAdmin && (
+				<button className="delete-button">
+					<TiDelete className="icon" />
+				</button>
+			)}
 			<div className="image">
 				<img src={imageSource} alt={title} />
 			</div>
@@ -29,6 +39,27 @@ const CardStyled = styled.div`
 	display: grid;
 	grid-template-rows: 65% 1fr;
 	border-radius: ${theme.borderRadius.extraRound};
+	position: relative;
+
+	.delete-button {
+		position: absolute;
+		top: 15px;
+		right: 15px;
+
+		padding: 0;
+
+		background: none;
+		border: none;
+		color: ${theme.colors.primary};
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		.icon {
+			font-size: 20px;
+		}
+	}
 
 	.image {
 		width: 100%;
