@@ -7,7 +7,7 @@ import Card from "../../../reusable-ui/Card";
 import PrimaryButton from "../../../reusable-ui/PrimaryButton";
 
 export default function Menu() {
-	const { menu } = useContext(OrderContext);
+	const { menu, isModeAdmin } = useContext(OrderContext);
 
 	return (
 		<MenuStyled>
@@ -26,16 +26,27 @@ export default function Menu() {
 				);
 			})}
 
-			{menu.length === 0 && (
-				<div className="page-without-product">
-					<h1>LE MENU EST VIDE ?</h1>
-					<h2>Cliquez ci-dessous pour le réinitialiser</h2>
-					<PrimaryButton
-						label={"Générer de nouveaux produits"}
-						className="button"
-					/>
-				</div>
-			)}
+			{menu.length === 0 &&
+				(isModeAdmin ? (
+					<div className="page-without-product">
+						<h1>LE MENU EST VIDE ?</h1>
+						<br />
+						<h2>Cliquez ci-dessous pour le réinitialiser</h2>
+						<br />
+						<PrimaryButton
+							label={"Générer de nouveaux produits"}
+							className="button"
+						/>
+					</div>
+				) : (
+					<div className="page-without-product">
+						<h1>Victime de notre succès ! :D</h1>
+						<br />
+						<h2>De nouvelles recettes sont en cours de préparation.</h2>
+						<br />
+						<h2>À très vite !</h2>
+					</div>
+				))}
 		</MenuStyled>
 	);
 }
@@ -69,8 +80,6 @@ const MenuStyled = styled.div`
 
 		h2 {
 			font-weight: ${theme.fonts.weights.regular};
-			margin-top: 20px;
-			margin-bottom: 30px;
 		}
 
 		button {
