@@ -9,39 +9,33 @@ import { theme } from "../../../../../../theme";
 import PrimaryButton from "../../../../../reusable-ui/PrimaryButton";
 import TextInput from "../../../../../reusable-ui/TextInput";
 
-export default function AddForm({ formData, setFormData }) {
-	const [isSubmittedForm, setIsSubmittedForm] = useState(false);
+export default function AddForm({ newProduct, setNewProduct }) {
+	const [isSubmitted, setIsSubmitted] = useState(false);
 
 	const { handleAdd } = useContext(OrderContext);
 
-	const handleInputChange = (event) => {
+	const handleChange = (event) => {
 		const { name, value } = event.target;
-		setFormData((prevFormData) => ({
-			...prevFormData,
-			[name]: value,
-		}));
-	};
-
-	const newProduct = {
-		imageSource: formData.image,
-		title: formData.name,
-		price: formData.price,
+		setNewProduct({ ...newProduct, [name]: value });
 	};
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		handleAdd(newProduct);
+		const newProductToAdd = {
+			...newProduct,
+			id: crypto.randomUUID(),
+		};
+		handleAdd(newProductToAdd);
 
-		setIsSubmittedForm(true);
-
+		setIsSubmitted(true);
 		setTimeout(() => {
-			setIsSubmittedForm(false);
+			setIsSubmitted(false);
 		}, 2000);
 
-		setFormData({
-			name: "",
-			image: "",
-			price: "",
+		setNewProduct({
+			title: "",
+			imageSource: "",
+			price: 0,
 		});
 	};
 
@@ -49,9 +43,9 @@ export default function AddForm({ formData, setFormData }) {
 		<AddFormStyled action="submit" className="product-info" onSubmit={handleSubmit}>
 			<TextInput
 				type="text"
-				name="name"
-				value={formData.name}
-				onChange={handleInputChange}
+				name="title"
+				value={newProduct.title}
+				onChange={handleChange}
 				Icon={<FaHamburger className="icon" />}
 				className="add-product-input"
 				placeholder={"Nom du produit (ex: Super Burger)"}
@@ -59,9 +53,9 @@ export default function AddForm({ formData, setFormData }) {
 
 			<TextInput
 				type="url"
-				name="image"
-				value={formData.image}
-				onChange={handleInputChange}
+				name="imageSource"
+				value={newProduct.imageSource}
+				onChange={handleChange}
 				Icon={<BsFillCameraFill className="icon" />}
 				className="add-product-input"
 				placeholder={
@@ -72,8 +66,8 @@ export default function AddForm({ formData, setFormData }) {
 			<TextInput
 				type="text"
 				name="price"
-				value={formData.price}
-				onChange={handleInputChange}
+				value={newProduct.price ? newProduct.price : ""}
+				onChange={handleChange}
 				Icon={<MdOutlineEuro className="icon" />}
 				className="add-product-input"
 				placeholder={"Prix"}
@@ -84,7 +78,7 @@ export default function AddForm({ formData, setFormData }) {
 					label={"Ajouter un nouveau produit au menu"}
 					className={"add-product-button"}
 				/>
-				{isSubmittedForm && (
+				{isSubmitted && (
 					<div className="successMessage">
 						<FiCheckCircle />
 						Ajouté avec succès !

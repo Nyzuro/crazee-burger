@@ -8,6 +8,7 @@ import PrimaryButton from "../../../reusable-ui/PrimaryButton";
 
 export default function Menu() {
 	const { menu, isModeAdmin } = useContext(OrderContext);
+	const IMAGE_BY_DEFAULT = "../../../../../public/images/coming-soon.png";
 
 	return (
 		<MenuStyled>
@@ -15,11 +16,7 @@ export default function Menu() {
 				return (
 					<Card
 						key={id}
-						imageSource={
-							imageSource
-								? imageSource
-								: "../../../../../public/images/coming-soon.png"
-						}
+						imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
 						title={title}
 						leftDescription={formatPrice(price)}
 					/>

@@ -5,23 +5,23 @@ import AddForm from "./AddForm";
 
 export default function AddProduct() {
 	const EMPTY_PRODUCT = {
-		name: "",
-		image: "",
+		title: "",
+		imageSource: "",
 		price: 0,
 	};
 
-	const [formData, setFormData] = useState({ EMPTY_PRODUCT });
+	const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
 	return (
 		<AddProductStyles>
 			<div className="preview-image">
-				{formData.image ? (
-					<img src={formData.image} alt={formData.name} />
+				{newProduct.imageSource ? (
+					<img src={newProduct.imageSource} alt={newProduct.title} />
 				) : (
-					"Aucune image"
+					<div>Aucune Image</div>
 				)}
 			</div>
-			<AddForm formData={formData} setFormData={setFormData} />
+			<AddForm newProduct={newProduct} setNewProduct={setNewProduct} />
 		</AddProductStyles>
 	);
 }
