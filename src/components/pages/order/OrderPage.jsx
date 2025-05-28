@@ -10,7 +10,15 @@ export default function OrderPage() {
 	const [isModeAdmin, setIsModeAdmin] = useState(false);
 	const [isCollapsed, setIsCollapsed] = useState(false);
 	const [currentTabSelected, setCurrentTabSelected] = useState("add");
-	const [menu, setMenu] = useState(fakeMenu.EMPTY);
+	const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+
+	const handleAdd = (newProduct) => {
+		const menuCopy = [...menu];
+
+		const updatedMenu = [newProduct, ...menuCopy];
+
+		setMenu(updatedMenu);
+	};
 
 	const orderContextValue = {
 		isModeAdmin,
@@ -23,6 +31,7 @@ export default function OrderPage() {
 		setIsModeAdmin,
 		currentTabSelected,
 		setCurrentTabSelected,
+		handleAdd,
 	};
 
 	return (
