@@ -5,13 +5,11 @@ import OrderContext from "../../context/OrderContext";
 import { theme } from "../../theme";
 import PrimaryButton from "./PrimaryButton";
 
-export default function Card({ imageSource, title, leftDescription }) {
-	const { isModeAdmin } = useContext(OrderContext);
-
+export default function Card({ imageSource, title, leftDescription, isModeAdmin }) {
 	return (
 		<CardStyled>
 			{isModeAdmin && (
-				<button className="delete-button">
+				<button className="delete-button" aria-label="delete-button">
 					<TiDelete className="icon" />
 				</button>
 			)}
@@ -46,6 +44,10 @@ const CardStyled = styled.div`
 		top: 15px;
 		right: 15px;
 
+		cursor: pointer;
+
+		width: 30px;
+		height: 30px;
 		padding: 0;
 
 		background: none;
@@ -57,7 +59,15 @@ const CardStyled = styled.div`
 		justify-content: center;
 
 		.icon {
-			font-size: 20px;
+			height: 100%;
+			width: 100%;
+		}
+
+		:hover {
+			color: ${theme.colors.red};
+		}
+		:active {
+			color: ${theme.colors.primary};
 		}
 	}
 

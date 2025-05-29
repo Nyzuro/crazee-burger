@@ -19,6 +19,7 @@ export default function Menu() {
 						imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
 						title={title}
 						leftDescription={formatPrice(price)}
+						isModeAdmin={isModeAdmin}
 					/>
 				);
 			})}
