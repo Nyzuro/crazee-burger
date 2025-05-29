@@ -1,14 +1,12 @@
-import { useContext } from "react";
 import { TiDelete } from "react-icons/ti";
 import styled from "styled-components";
-import OrderContext from "../../context/OrderContext";
 import { theme } from "../../theme";
 import PrimaryButton from "./PrimaryButton";
 
-export default function Card({ imageSource, title, leftDescription, isModeAdmin }) {
+export default function Card({ imageSource, title, leftDescription, hasDeleteButton }) {
 	return (
 		<CardStyled>
-			{isModeAdmin && (
+			{hasDeleteButton && (
 				<button className="delete-button" aria-label="delete-button">
 					<TiDelete className="icon" />
 				</button>
