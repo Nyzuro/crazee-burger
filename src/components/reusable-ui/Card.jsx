@@ -3,11 +3,21 @@ import styled from "styled-components";
 import { theme } from "../../theme";
 import PrimaryButton from "./PrimaryButton";
 
-export default function Card({ imageSource, title, leftDescription, hasDeleteButton }) {
+export default function Card({
+	imageSource,
+	title,
+	leftDescription,
+	hasDeleteButton,
+	onClick,
+}) {
 	return (
 		<CardStyled>
 			{hasDeleteButton && (
-				<button className="delete-button" aria-label="delete-button">
+				<button
+					className="delete-button"
+					aria-label="delete-button"
+					onClick={onClick}
+				>
 					<TiDelete className="icon" />
 				</button>
 			)}

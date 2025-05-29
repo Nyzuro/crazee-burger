@@ -7,7 +7,7 @@ import Card from "../../../reusable-ui/Card";
 import PrimaryButton from "../../../reusable-ui/PrimaryButton";
 
 export default function Menu() {
-	const { menu, isModeAdmin } = useContext(OrderContext);
+	const { menu, isModeAdmin, handleDelete } = useContext(OrderContext);
 	const IMAGE_BY_DEFAULT = "../../../../../public/images/coming-soon.png";
 
 	return (
@@ -20,6 +20,7 @@ export default function Menu() {
 						title={title}
 						leftDescription={formatPrice(price)}
 						hasDeleteButton={isModeAdmin}
+						onClick={() => handleDelete(id)}
 					/>
 				);
 			})}
