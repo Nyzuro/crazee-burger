@@ -18,7 +18,7 @@ export default function AddProduct() {
 				{newProduct.imageSource ? (
 					<img src={newProduct.imageSource} alt={newProduct.title} />
 				) : (
-					<div>Aucune Image</div>
+					<div className="empty-image">Aucune Image</div>
 				)}
 			</div>
 			<AddForm newProduct={newProduct} setNewProduct={setNewProduct} />
@@ -33,14 +33,6 @@ const AddProductStyles = styled.div`
 	gap: 20px;
 
 	.preview-image {
-		color: ${theme.colors.greySemiDark};
-		border: 1px solid ${theme.colors.greyLight};
-		border-radius: ${theme.borderRadius.round};
-
-		display: flex;
-		align-items: center;
-		justify-content: center;
-
 		width: 215px;
 		height: 120px;
 
@@ -48,6 +40,19 @@ const AddProductStyles = styled.div`
 			object-fit: contain;
 			width: 100%;
 			height: 100%;
+		}
+
+		.empty-image {
+			width: 100%;
+			height: 100%;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			color: ${theme.colors.greySemiDark};
+			border: 1px solid ${theme.colors.greyLight};
+			border-radius: ${theme.borderRadius.round};
 		}
 	}
 `;
