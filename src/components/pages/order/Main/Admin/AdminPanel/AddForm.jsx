@@ -46,7 +46,7 @@ export default function AddForm({ newProduct, setNewProduct }) {
 				name="title"
 				value={newProduct.title}
 				onChange={handleChange}
-				Icon={<FaHamburger className="icon" />}
+				Icon={<FaHamburger />}
 				className="add-product-input"
 				placeholder={"Nom du produit (ex: Super Burger)"}
 			/>
@@ -56,7 +56,7 @@ export default function AddForm({ newProduct, setNewProduct }) {
 				name="imageSource"
 				value={newProduct.imageSource}
 				onChange={handleChange}
-				Icon={<BsFillCameraFill className="icon" />}
+				Icon={<BsFillCameraFill />}
 				className="add-product-input"
 				placeholder={
 					"Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
@@ -68,7 +68,7 @@ export default function AddForm({ newProduct, setNewProduct }) {
 				name="price"
 				value={newProduct.price ? newProduct.price : ""}
 				onChange={handleChange}
-				Icon={<MdOutlineEuro className="icon" />}
+				Icon={<MdOutlineEuro />}
 				className="add-product-input"
 				placeholder={"Prix"}
 			/>
@@ -95,11 +95,9 @@ const AddFormStyled = styled.form`
 
 		margin: 0px 0px 8px 0px;
 		padding: 8px 16px 8px 24px;
-		gap: 13px;
 
 		.icon {
 			color: ${theme.colors.greyBlue};
-			font-size: ${theme.fonts.size.SM};
 		}
 
 		input {

@@ -11,24 +11,28 @@ export default function TextInput({
 }) {
 	return (
 		<InputStyled className={className}>
-			{Icon && Icon}
+			{Icon && <div className="icon">{Icon}</div>}
 			<input type={type} value={value} onChange={onChange} {...extraProps} />
 		</InputStyled>
 	);
 }
 
 const InputStyled = styled.div`
-	background-color: #fff;
+	background-color: ${theme.colors.white};
 	margin: 18px 0px;
-	padding: 18px 24px;
+	padding: 18px 28px 18px 36px;
 	border-radius: ${theme.borderRadius.round};
 	display: flex;
 	align-items: center;
 
-	.input-icon {
+	.icon {
 		font-size: ${theme.fonts.size.SM};
-		margin-right: 8px;
 		color: ${theme.colors.greySemiDark};
+		margin-right: 13px;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	input {
