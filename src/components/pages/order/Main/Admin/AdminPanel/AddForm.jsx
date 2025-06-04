@@ -49,6 +49,7 @@ export default function AddForm({ newProduct, setNewProduct }) {
 				Icon={<FaHamburger />}
 				className="add-product-input"
 				placeholder={"Nom du produit (ex: Super Burger)"}
+				version="minimalist"
 			/>
 
 			<TextInput
@@ -61,6 +62,7 @@ export default function AddForm({ newProduct, setNewProduct }) {
 				placeholder={
 					"Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
 				}
+				version="minimalist"
 			/>
 
 			<TextInput
@@ -71,6 +73,7 @@ export default function AddForm({ newProduct, setNewProduct }) {
 				Icon={<MdOutlineEuro />}
 				className="add-product-input"
 				placeholder={"Prix"}
+				version="minimalist"
 			/>
 
 			<div className="button-with-message">
@@ -90,25 +93,6 @@ export default function AddForm({ newProduct, setNewProduct }) {
 }
 
 const AddFormStyled = styled.form`
-	.add-product-input {
-		background-color: ${theme.colors.background_white};
-
-		margin: 0px 0px 8px 0px;
-		padding: 8px 16px 8px 24px;
-
-		.icon {
-			color: ${theme.colors.greyBlue};
-		}
-
-		input {
-			background-color: ${theme.colors.background_white};
-
-			&::placeholder {
-				background-color: ${theme.colors.background_white};
-			}
-		}
-	}
-
 	.add-product-button {
 		width: auto;
 		padding: 10px 29px;
