@@ -6,7 +6,7 @@ import { MdOutlineEuro } from "react-icons/md";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
 import { theme } from "../../../../../../theme";
-import PrimaryButton from "../../../../../reusable-ui/PrimaryButton";
+import Button from "../../../../../reusable-ui/Button";
 import TextInput from "../../../../../reusable-ui/TextInput";
 
 export default function AddForm({ newProduct, setNewProduct }) {
@@ -77,9 +77,10 @@ export default function AddForm({ newProduct, setNewProduct }) {
 			/>
 
 			<div className="button-with-message">
-				<PrimaryButton
+				<Button
 					label={"Ajouter un nouveau produit au menu"}
 					className={"add-product-button"}
+					version="success"
 				/>
 				{isSubmitted && (
 					<div className="successMessage">
@@ -93,25 +94,6 @@ export default function AddForm({ newProduct, setNewProduct }) {
 }
 
 const AddFormStyled = styled.form`
-	.add-product-button {
-		width: auto;
-		padding: 10px 29px;
-		font-size: 14px;
-		background-color: ${theme.colors.success};
-
-		&:hover {
-			background-color: ${theme.colors.success};
-			color: ${theme.colors.white};
-			border: none;
-		}
-
-		&:active {
-			background-color: ${theme.colors.white};
-			color: ${theme.colors.success};
-			border: 1px solid ${theme.colors.success};
-		}
-	}
-
 	.button-with-message {
 		display: flex;
 		flex-direction: row;
