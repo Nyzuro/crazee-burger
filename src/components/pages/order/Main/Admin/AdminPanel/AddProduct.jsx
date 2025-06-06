@@ -1,16 +1,11 @@
-import { useState } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
+import OrderContext from "../../../../../../context/OrderContext";
 import { theme } from "../../../../../../theme";
 import AddForm from "./AddForm";
 
 export default function AddProduct() {
-	const EMPTY_PRODUCT = {
-		title: "",
-		imageSource: "",
-		price: 0,
-	};
-
-	const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+	const { newProduct } = useContext(OrderContext);
 
 	return (
 		<AddProductStyles>
@@ -21,7 +16,7 @@ export default function AddProduct() {
 					<div className="empty-image">Aucune Image</div>
 				)}
 			</div>
-			<AddForm newProduct={newProduct} setNewProduct={setNewProduct} />
+			<AddForm />
 		</AddProductStyles>
 	);
 }

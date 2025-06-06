@@ -9,10 +9,17 @@ import { theme } from "../../../../../../theme";
 import Button from "../../../../../reusable-ui/Button";
 import TextInput from "../../../../../reusable-ui/TextInput";
 
-export default function AddForm({ newProduct, setNewProduct }) {
+export const EMPTY_PRODUCT = {
+	id: "",
+	title: "",
+	imageSource: "",
+	price: 0,
+};
+
+export default function AddForm() {
 	const [isSubmitted, setIsSubmitted] = useState(false);
 
-	const { handleAdd } = useContext(OrderContext);
+	const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
@@ -32,11 +39,7 @@ export default function AddForm({ newProduct, setNewProduct }) {
 			setIsSubmitted(false);
 		}, 2000);
 
-		setNewProduct({
-			title: "",
-			imageSource: "",
-			price: 0,
-		});
+		setNewProduct(EMPTY_PRODUCT);
 	};
 
 	return (

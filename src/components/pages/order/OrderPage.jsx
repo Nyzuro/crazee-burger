@@ -5,12 +5,14 @@ import { fakeMenu } from "../../../fakeData/fakeMenu";
 import { theme } from "../../../theme";
 import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
+import { EMPTY_PRODUCT } from "./Main/Admin/AdminPanel/AddForm";
 
 export default function OrderPage() {
 	const [isModeAdmin, setIsModeAdmin] = useState(false);
 	const [isCollapsed, setIsCollapsed] = useState(false);
 	const [currentTabSelected, setCurrentTabSelected] = useState("add");
 	const [menu, setMenu] = useState(fakeMenu.SMALL);
+	const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
 	const handleAdd = (newProduct) => {
 		const menuCopy = [...menu];
@@ -44,6 +46,8 @@ export default function OrderPage() {
 		handleAdd,
 		handleDelete,
 		resetMenu,
+		newProduct,
+		setNewProduct,
 	};
 
 	return (
