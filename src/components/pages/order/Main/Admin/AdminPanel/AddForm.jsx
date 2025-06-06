@@ -84,7 +84,7 @@ export default function AddForm({ newProduct, setNewProduct }) {
 				/>
 				{isSubmitted && (
 					<div className="successMessage">
-						<FiCheckCircle />
+						<FiCheckCircle className="icon" />
 						Ajouté avec succès !
 					</div>
 				)}
@@ -105,5 +105,10 @@ const AddFormStyled = styled.form`
 		color: ${theme.colors.success};
 		display: flex;
 		align-items: center;
+
+		.icon {
+			margin-left: 10px;
+			margin-right: 5px;
+		}
 	}
 `;
