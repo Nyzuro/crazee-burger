@@ -5,14 +5,13 @@ import Button from "../../../../reusable-ui/Button";
 export default function EmptyMenuAdmin({ resetMenu }) {
 	return (
 		<EmptyMenuAdminStyled>
-			<h1>LE MENU EST VIDE ?</h1>
-			<br />
-			<h2>Cliquez ci-dessous pour le réinitialiser</h2>
-			<br />
+			<span className="title">LE MENU EST VIDE ?</span>
+			<span className="description">Cliquez ci-dessous pour le réinitialiser</span>
 			<Button
 				label={"Générer de nouveaux produits"}
 				className="button"
 				onClick={resetMenu}
+				version="primary"
 			/>
 		</EmptyMenuAdminStyled>
 	);
@@ -27,16 +26,20 @@ const EmptyMenuAdminStyled = styled.div`
 	font-family: "Amatic SC", sans-serif;
 	font-size: ${theme.fonts.size.P4};
 
-	h1 {
+	.title {
 		color: ${theme.colors.greyBlue};
 		font-weight: ${theme.fonts.weights.bold};
 	}
 
-	h2 {
+	.description {
+		color: ${theme.colors.greyBlue};
 		font-weight: ${theme.fonts.weights.regular};
+		margin-top: 20px;
 	}
 
 	button {
+		margin-top: 30px;
+		font-size: ${theme.fonts.size.XS};
 		width: auto;
 	}
 `;
