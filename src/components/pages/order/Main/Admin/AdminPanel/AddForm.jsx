@@ -8,6 +8,7 @@ import OrderContext from "../../../../../../context/OrderContext";
 import { theme } from "../../../../../../theme";
 import Button from "../../../../../reusable-ui/Button";
 import TextInput from "../../../../../reusable-ui/TextInput";
+import ImagePreview from "./ImagePreview";
 
 export const EMPTY_PRODUCT = {
 	id: "",
@@ -43,41 +44,47 @@ export default function AddForm() {
 	};
 
 	return (
-		<AddFormStyled action="submit" className="product-info" onSubmit={handleSubmit}>
-			<TextInput
-				type="text"
-				name="title"
-				value={newProduct.title}
-				onChange={handleChange}
-				Icon={<FaHamburger />}
-				className="add-product-input"
-				placeholder={"Nom du produit (ex: Super Burger)"}
-				version="minimalist"
+		<AddFormStyles action="submit" onSubmit={handleSubmit}>
+			<ImagePreview
+				className="image-preview"
+				imageSource={newProduct.imageSource}
+				title={newProduct.title}
 			/>
 
-			<TextInput
-				type="url"
-				name="imageSource"
-				value={newProduct.imageSource}
-				onChange={handleChange}
-				Icon={<BsFillCameraFill />}
-				className="add-product-input"
-				placeholder={
-					"Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
-				}
-				version="minimalist"
-			/>
-
-			<TextInput
-				type="text"
-				name="price"
-				value={newProduct.price ? newProduct.price : ""}
-				onChange={handleChange}
-				Icon={<MdOutlineEuro />}
-				className="add-product-input"
-				placeholder={"Prix"}
-				version="minimalist"
-			/>
+			<div className="input-fields">
+				<TextInput
+					type="text"
+					name="title"
+					value={newProduct.title}
+					onChange={handleChange}
+					Icon={<FaHamburger />}
+					className="add-product-input"
+					placeholder={"Nom du produit (ex: Super Burger)"}
+					version="minimalist"
+				/>
+				<TextInput
+					type="url"
+					name="imageSource"
+					value={newProduct.imageSource}
+					onChange={handleChange}
+					Icon={<BsFillCameraFill />}
+					className="add-product-input"
+					placeholder={
+						"Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
+					}
+					version="minimalist"
+				/>
+				<TextInput
+					type="text"
+					name="price"
+					value={newProduct.price ? newProduct.price : ""}
+					onChange={handleChange}
+					Icon={<MdOutlineEuro />}
+					className="add-product-input"
+					placeholder={"Prix"}
+					version="minimalist"
+				/>
+			</div>
 
 			<div className="button-with-message">
 				<Button
@@ -92,14 +99,29 @@ export default function AddForm() {
 					</div>
 				)}
 			</div>
-		</AddFormStyled>
+		</AddFormStyles>
 	);
 }
 
-const AddFormStyled = styled.form`
+const AddFormStyles = styled.form`
+	width: 70%;
+	height: 100%;
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	grid-template-rows: 3fr 1fr;
+	grid-column-gap: 20px;
+	grid-row-gap: 8px;
+
+	.input-fields {
+		display: grid;
+		grid-area: 1 / 2 / 2 / 3;
+		grid-row-gap: 8px;
+	}
+
 	.button-with-message {
+		grid-area: 2 / 2 / 3 / 3;
+		height: fit-content;
 		display: flex;
-		flex-direction: row;
 		align-items: center;
 		gap: 5px;
 	}

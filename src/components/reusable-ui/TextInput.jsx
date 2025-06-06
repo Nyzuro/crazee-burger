@@ -68,7 +68,6 @@ const extraStyleNormal = css`
 
 const extraStyleMinimalist = css`
 	background-color: ${theme.colors.background_white};
-	margin: 0px 0px 8px 0px;
 	padding: 8px 16px 8px 24px;
 
 	.icon {
