@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { BsFillCameraFill } from "react-icons/bs";
 import { FaHamburger } from "react-icons/fa";
-import { FiCheckCircle } from "react-icons/fi";
 import { MdOutlineEuro } from "react-icons/md";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
@@ -9,6 +8,7 @@ import { theme } from "../../../../../../theme";
 import Button from "../../../../../reusable-ui/Button";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import ImagePreview from "./ImagePreview";
+import SubmitMessage from "./SubmitMessage";
 
 export const EMPTY_PRODUCT = {
 	id: "",
@@ -92,12 +92,7 @@ export default function AddForm() {
 					className={"add-product-button"}
 					version="success"
 				/>
-				{isSubmitted && (
-					<div className="successMessage">
-						<FiCheckCircle className="icon" />
-						Ajouté avec succès !
-					</div>
-				)}
+				{isSubmitted && <SubmitMessage />}
 			</div>
 		</AddFormStyles>
 	);
@@ -124,16 +119,5 @@ const AddFormStyles = styled.form`
 		display: flex;
 		align-items: center;
 		gap: 5px;
-	}
-
-	.successMessage {
-		color: ${theme.colors.success};
-		display: flex;
-		align-items: center;
-
-		.icon {
-			margin-left: 10px;
-			margin-right: 5px;
-		}
 	}
 `;
