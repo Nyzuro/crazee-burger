@@ -54,10 +54,17 @@ const extraStyleSuccess = css`
 	padding: 10px 29px;
 	font-size: 14px;
 	background-color: ${theme.colors.success};
+	border: 1px solid ${theme.colors.success};
 
-	&:active {
+	&:hover {
 		background-color: ${theme.colors.white};
 		color: ${theme.colors.success};
+		border: 1px solid ${theme.colors.success};
+		transition: all 200ms ease-out;
+	}
+	&:active {
+		background-color: ${theme.colors.success};
+		color: ${theme.colors.white};
 		border: 1px solid ${theme.colors.success};
 	}
 `;
