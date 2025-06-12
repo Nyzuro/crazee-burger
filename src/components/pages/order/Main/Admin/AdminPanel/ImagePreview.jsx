@@ -16,16 +16,12 @@ export default function ImagePreview({ imageSource, title, className }) {
 const ImagePreviewStyled = styled.div`
 	display: grid;
 	grid-area: 1 / 1 / 2 / 2;
-	position: relative;
+	place-items: center;
 
 	img {
-		position: absolute;
-		top: 0;
-		left: 0;
 		object-fit: contain;
-		width: 100%;
-		height: 100%;
-		object-position: center;
+		width: 100px;
+		height: 100px;
 	}
 
 	.empty-image {
