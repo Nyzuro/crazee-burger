@@ -3,9 +3,9 @@ import styled from "styled-components";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
 import { theme } from "../../../theme";
+import { EMPTY_PRODUCT } from "./Main/Admin/AdminPanel/AddForm";
 import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
-import { EMPTY_PRODUCT } from "./Main/Admin/AdminPanel/AddForm";
 
 export default function OrderPage() {
 	const [isModeAdmin, setIsModeAdmin] = useState(false);

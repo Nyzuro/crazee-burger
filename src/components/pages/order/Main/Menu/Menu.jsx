@@ -9,7 +9,7 @@ import EmptyMenuClient from "./EmptyMenuClient";
 
 export default function Menu() {
 	const { menu, isModeAdmin, handleDelete, resetMenu } = useContext(OrderContext);
-	const IMAGE_BY_DEFAULT = "../../../../../public/images/coming-soon.png";
+	const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
 	if (menu.length == 0) {
 		return isModeAdmin ? (
