@@ -1,8 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../context/OrderContext";
-import { fakeMenu2 } from "../../../fakeData/fakeMenu";
+import { fakeMenu } from "../../../fakeData/fakeMenu";
 import { theme } from "../../../theme";
+import { EMPTY_PRODUCT } from "./Main/Admin/AdminPanel/AddForm";
 import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
 
@@ -10,18 +11,43 @@ export default function OrderPage() {
 	const [isModeAdmin, setIsModeAdmin] = useState(false);
 	const [isCollapsed, setIsCollapsed] = useState(false);
 	const [currentTabSelected, setCurrentTabSelected] = useState("add");
-	const [menu, setMenu] = useState(fakeMenu2);
+	const [menu, setMenu] = useState(fakeMenu.SMALL);
+	const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+
+	const handleAdd = (newProduct) => {
+		const menuCopy = [...menu];
+
+		const updatedMenu = [newProduct, ...menuCopy];
+
+		setMenu(updatedMenu);
+	};
+
+	const handleDelete = (productId) => {
+		const menuCopy = [...menu];
+
+		const updatedMenu = menuCopy.filter((product) => product.id !== productId);
+
+		setMenu(updatedMenu);
+	};
+
+	const resetMenu = () => {
+		setMenu(fakeMenu.SMALL);
+	};
 
 	const orderContextValue = {
 		isModeAdmin,
 		setIsModeAdmin,
 		menu,
-		isModeAdmin,
+		setMenu,
 		isCollapsed,
 		setIsCollapsed,
-		setIsModeAdmin,
 		currentTabSelected,
 		setCurrentTabSelected,
+		handleAdd,
+		handleDelete,
+		resetMenu,
+		newProduct,
+		setNewProduct,
 	};
 
 	return (

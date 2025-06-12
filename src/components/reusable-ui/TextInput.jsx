@@ -1,27 +1,35 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 
-export default function TextInput({ value, onChange, Icon, ...extraProps }) {
+export default function TextInput({
+	value,
+	onChange,
+	Icon,
+	className,
+	type,
+	version,
+	...extraProps
+}) {
 	return (
-		<InputStyled>
-			{Icon && Icon}
-			<input type="text" value={value} onChange={onChange} {...extraProps} />
-		</InputStyled>
+		<TextInputStyled className={className} version={version}>
+			{Icon && <div className="icon">{Icon}</div>}
+			<input type={type} value={value} onChange={onChange} {...extraProps} />
+		</TextInputStyled>
 	);
 }
 
-const InputStyled = styled.div`
-	background-color: #fff;
-	margin: 18px 0px;
-	padding: 18px 24px;
+const TextInputStyled = styled.div`
 	border-radius: ${theme.borderRadius.round};
 	display: flex;
 	align-items: center;
 
-	.input-icon {
+	.icon {
 		font-size: ${theme.fonts.size.SM};
-		margin-right: 8px;
-		color: ${theme.colors.greySemiDark};
+		margin-right: 13px;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	input {
@@ -31,7 +39,6 @@ const InputStyled = styled.div`
 		width: 100%;
 
 		&::placeholder {
-			background: ${theme.colors.white};
 			color: ${theme.colors.greyMedium};
 		}
 
@@ -39,4 +46,44 @@ const InputStyled = styled.div`
 			outline: none;
 		}
 	}
+
+	${({ version }) => extraStyle[version]}
 `;
+
+const extraStyleNormal = css`
+	background-color: ${theme.colors.white};
+	margin: 18px 0px;
+	padding: 18px 28px 18px 36px;
+
+	.icon {
+		color: ${theme.colors.greySemiDark};
+	}
+
+	input {
+		&::placeholder {
+			background: ${theme.colors.white};
+		}
+	}
+`;
+
+const extraStyleMinimalist = css`
+	background-color: ${theme.colors.background_white};
+	padding: 8px 16px 8px 24px;
+
+	.icon {
+		color: ${theme.colors.greyBlue};
+	}
+
+	input {
+		background-color: ${theme.colors.background_white};
+
+		&::placeholder {
+			background-color: ${theme.colors.background_white};
+		}
+	}
+`;
+
+const extraStyle = {
+	normal: extraStyleNormal,
+	minimalist: extraStyleMinimalist,
+};
