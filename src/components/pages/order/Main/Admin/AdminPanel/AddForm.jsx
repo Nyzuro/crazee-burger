@@ -1,13 +1,10 @@
 import { useContext, useState } from "react";
-import { BsFillCameraFill } from "react-icons/bs";
-import { FaHamburger } from "react-icons/fa";
-import { MdOutlineEuro } from "react-icons/md";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
-import { theme } from "../../../../../../theme";
 import Button from "../../../../../reusable-ui/Button";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import ImagePreview from "./ImagePreview";
+import { getInputsConfig } from "./InputsConfig";
 import SubmitMessage from "./SubmitMessage";
 
 export const EMPTY_PRODUCT = {
@@ -43,6 +40,8 @@ export default function AddForm() {
 		setNewProduct(EMPTY_PRODUCT);
 	};
 
+	const inputs = getInputsConfig(newProduct);
+
 	return (
 		<AddFormStyles action="submit" onSubmit={handleSubmit}>
 			<ImagePreview
@@ -52,38 +51,16 @@ export default function AddForm() {
 			/>
 
 			<div className="input-fields">
-				<TextInput
-					type="text"
-					name="title"
-					value={newProduct.title}
-					onChange={handleChange}
-					Icon={<FaHamburger />}
-					className="add-product-input"
-					placeholder={"Nom du produit (ex: Super Burger)"}
-					version="minimalist"
-				/>
-				<TextInput
-					type="url"
-					name="imageSource"
-					value={newProduct.imageSource}
-					onChange={handleChange}
-					Icon={<BsFillCameraFill />}
-					className="add-product-input"
-					placeholder={
-						"Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
-					}
-					version="minimalist"
-				/>
-				<TextInput
-					type="text"
-					name="price"
-					value={newProduct.price ? newProduct.price : ""}
-					onChange={handleChange}
-					Icon={<MdOutlineEuro />}
-					className="add-product-input"
-					placeholder={"Prix"}
-					version="minimalist"
-				/>
+				{inputs.map((input) => {
+					return (
+						<TextInput
+							key={input.id}
+							{...input}
+							version="minimalist"
+							onChange={handleChange}
+						/>
+					);
+				})}
 			</div>
 
 			<div className="button-with-message">
