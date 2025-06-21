@@ -9,9 +9,10 @@ export default function Card({
 	leftDescription,
 	hasDeleteButton,
 	onClick,
+	className,
 }) {
 	return (
-		<CardStyled>
+		<CardStyled className={className}>
 			{hasDeleteButton && (
 				<button
 					className="delete-button"
