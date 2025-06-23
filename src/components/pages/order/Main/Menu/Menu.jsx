@@ -25,12 +25,13 @@ export default function Menu() {
 			{menu.map(({ id, title, imageSource, price }) => {
 				return (
 					<Card
-						className={
+						className={isModeAdmin && "admin-card"}
+						version={
 							isModeAdmin
 								? cardClicked === id
-									? "admin-card-clicked"
-									: "admin-card"
-								: ""
+									? "selected"
+									: "normal"
+								: "normal"
 						}
 						key={id}
 						imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
@@ -66,9 +67,5 @@ const MenuStyled = styled.div`
 		transform: scale(1.05);
 		transition: all 200ms ease-out;
 		box-shadow: 0 0 10px ${theme.colors.primary}, ${theme.shadows.medium};
-	}
-
-	.admin-card-clicked {
-		background-color: ${theme.colors.primary};
 	}
 `;

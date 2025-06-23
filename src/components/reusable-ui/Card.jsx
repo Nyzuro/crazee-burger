@@ -1,5 +1,5 @@
 import { TiDelete } from "react-icons/ti";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 import Button from "./Button";
 
@@ -11,9 +11,10 @@ export default function Card({
 	handleDelete,
 	className,
 	handleClick,
+	version,
 }) {
 	return (
-		<CardStyled className={className} onClick={handleClick}>
+		<CardStyled className={className} onClick={handleClick} version={version}>
 			{hasDeleteButton && (
 				<button
 					className="delete-button"
@@ -38,7 +39,6 @@ export default function Card({
 }
 
 const CardStyled = styled.div`
-	background-color: ${theme.colors.white};
 	box-shadow: ${theme.shadows.medium};
 	width: 200px;
 	height: 300px;
@@ -122,4 +122,64 @@ const CardStyled = styled.div`
 			}
 		}
 	}
+
+	.title {
+		color: #17161a;
+	}
+
+	${({ version }) => extraStyle[version]}
 `;
+
+const extraStyleNormal = css`
+	background-color: ${theme.colors.white};
+
+	.delete-button {
+		color: ${theme.colors.primary};
+
+		:hover {
+			color: ${theme.colors.red};
+		}
+		:active {
+			color: ${theme.colors.primary};
+		}
+	}
+
+	.description {
+		color: #ffa01b;
+	}
+`;
+
+const extraStyleSelected = css`
+	background-color: ${theme.colors.primary};
+
+	.delete-button {
+		color: ${theme.colors.white};
+
+		:hover {
+			color: ${theme.colors.red};
+		}
+		:active {
+			color: ${theme.colors.white};
+		}
+	}
+
+	.left-description {
+		color: ${theme.colors.white};
+	}
+
+	.add-button {
+		background-color: ${theme.colors.white};
+		color: ${theme.colors.primary};
+
+		&:active {
+			background-color: ${theme.colors.primary};
+			color: ${theme.colors.white};
+			border: 1px solid ${theme.colors.white};
+		}
+	}
+`;
+
+const extraStyle = {
+	normal: extraStyleNormal,
+	selected: extraStyleSelected,
+};
