@@ -8,16 +8,17 @@ export default function Card({
 	title,
 	leftDescription,
 	hasDeleteButton,
-	onClick,
+	handleDelete,
 	className,
+	handleClick,
 }) {
 	return (
-		<CardStyled className={className}>
+		<CardStyled className={className} onClick={handleClick}>
 			{hasDeleteButton && (
 				<button
 					className="delete-button"
 					aria-label="delete-button"
-					onClick={onClick}
+					onClick={handleDelete}
 				>
 					<TiDelete className="icon" />
 				</button>

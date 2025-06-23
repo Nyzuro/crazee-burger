@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../context/OrderContext";
 import { theme } from "../../../../../theme";
@@ -8,6 +8,7 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 
 export default function Menu() {
+	const [cardClicked, setCardClicked] = useState(null);
 	const { menu, isModeAdmin, handleDelete, resetMenu } = useContext(OrderContext);
 	const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
@@ -24,13 +25,22 @@ export default function Menu() {
 			{menu.map(({ id, title, imageSource, price }) => {
 				return (
 					<Card
-						className={isModeAdmin ? "admin-card" : ""}
+						className={
+							isModeAdmin
+								? cardClicked === id
+									? "admin-card-clicked"
+									: "admin-card"
+								: ""
+						}
 						key={id}
 						imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
 						title={title}
 						leftDescription={formatPrice(price)}
 						hasDeleteButton={isModeAdmin}
-						onClick={() => handleDelete(id)}
+						handleDelete={() => handleDelete(id)}
+						handleClick={() =>
+							cardClicked === id ? setCardClicked(null) : setCardClicked(id)
+						}
 					/>
 				);
 			})}
@@ -56,5 +66,9 @@ const MenuStyled = styled.div`
 		transform: scale(1.05);
 		transition: all 200ms ease-out;
 		box-shadow: 0 0 10px ${theme.colors.primary}, ${theme.shadows.medium};
+	}
+
+	.admin-card-clicked {
+		background-color: ${theme.colors.primary};
 	}
 `;
