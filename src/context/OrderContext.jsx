@@ -20,4 +20,6 @@ export default createContext({
 
 	newProduct: {},
 	setNewProduct: () => {},
+
+	selectTab: () => {},
 });

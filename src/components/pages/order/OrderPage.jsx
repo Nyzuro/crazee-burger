@@ -34,6 +34,11 @@ export default function OrderPage() {
 		setMenu(fakeMenu.SMALL);
 	};
 
+	const selectTab = (tabSelected) => {
+		setIsCollapsed(false);
+		setCurrentTabSelected(tabSelected);
+	};
+
 	const orderContextValue = {
 		isModeAdmin,
 		setIsModeAdmin,
@@ -48,6 +53,7 @@ export default function OrderPage() {
 		resetMenu,
 		newProduct,
 		setNewProduct,
+		selectTab,
 	};
 
 	return (

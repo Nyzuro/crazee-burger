@@ -9,8 +9,16 @@ import EmptyMenuClient from "./EmptyMenuClient";
 
 export default function Menu() {
 	const [cardClicked, setCardClicked] = useState(null);
-	const { menu, isModeAdmin, handleDelete, resetMenu } = useContext(OrderContext);
+	const { menu, isModeAdmin, handleDelete, resetMenu, selectTab } =
+		useContext(OrderContext);
+
 	const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
+
+	const handleClick = (id) => {
+		cardClicked === id ? setCardClicked(null) : setCardClicked(id);
+
+		selectTab("edit");
+	};
 
 	if (menu.length == 0) {
 		return isModeAdmin ? (
@@ -39,9 +47,7 @@ export default function Menu() {
 						leftDescription={formatPrice(price)}
 						hasDeleteButton={isModeAdmin}
 						handleDelete={() => handleDelete(id)}
-						handleClick={() =>
-							cardClicked === id ? setCardClicked(null) : setCardClicked(id)
-						}
+						handleClick={() => handleClick(id)}
 					/>
 				);
 			})}
