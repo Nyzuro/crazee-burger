@@ -15,6 +15,7 @@ export default function EditForm() {
 	};
 
 	const [productInfo, setProductInfo] = useState(getProductInfo(cardClicked));
+	const inputs = cardClicked && getInputsConfig(productInfo);
 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
@@ -33,41 +34,41 @@ export default function EditForm() {
 		);
 	};
 
-	const inputs = getInputsConfig(productInfo);
-
 	return (
 		<EditFormStyled>
-			<ImagePreview
-				className="image-preview"
-				imageSource={productInfo.imageSource}
-				title={productInfo.title}
-			/>
+			{cardClicked ? (
+				<form action="">
+					<ImagePreview
+						className="image-preview"
+						imageSource={productInfo.imageSource}
+						title={productInfo.title}
+					/>
 
-			<div className="input-fields">
-				{cardClicked ? (
-					inputs.map((input) => {
-						return (
-							<TextInput
-								key={input.id}
-								{...input}
-								value={productInfo[input.name]}
-								version="minimalist"
-								onChange={handleChange}
-							/>
-						);
-					})
-				) : (
-					<div>
-						"Cliquer sur un produit du menu pour le modifier"
-						<HiCursorClick />
+					<div className="input-fields">
+						{inputs.map((input) => {
+							return (
+								<TextInput
+									key={input.id}
+									{...input}
+									value={productInfo[input.name]}
+									version="minimalist"
+									onChange={handleChange}
+								/>
+							);
+						})}
 					</div>
-				)}
-			</div>
+				</form>
+			) : (
+				<div>
+					"Cliquer sur un produit du menu pour le modifier"
+					<HiCursorClick />
+				</div>
+			)}
 		</EditFormStyled>
 	);
 }
 
-const EditFormStyled = styled.form`
+const EditFormStyled = styled.div`
 	font-family: "Amatic SC", sans-serif;
 	font-size: ${theme.fonts.size.P3};
 	font-weight: ${theme.fonts.weights.light};
