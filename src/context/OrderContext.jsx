@@ -22,4 +22,7 @@ export default createContext({
 	setNewProduct: () => {},
 
 	selectTab: () => {},
+
+	cardClicked: 1,
+	setCardClicked: () => {},
 });

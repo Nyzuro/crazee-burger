@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../context/OrderContext";
 import { theme } from "../../../../../theme";
@@ -8,9 +8,15 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 
 export default function Menu() {
-	const [cardClicked, setCardClicked] = useState(null);
-	const { menu, isModeAdmin, handleDelete, resetMenu, selectTab } =
-		useContext(OrderContext);
+	const {
+		menu,
+		isModeAdmin,
+		handleDelete,
+		resetMenu,
+		cardClicked,
+		setCardClicked,
+		selectTab,
+	} = useContext(OrderContext);
 
 	const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
@@ -47,7 +53,7 @@ export default function Menu() {
 						leftDescription={formatPrice(price)}
 						hasDeleteButton={isModeAdmin}
 						handleDelete={() => handleDelete(id)}
-						handleClick={() => handleClick(id)}
+						onClick={() => handleClick(id)}
 					/>
 				);
 			})}

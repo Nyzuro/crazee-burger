@@ -10,11 +10,11 @@ export default function Card({
 	hasDeleteButton,
 	handleDelete,
 	className,
-	handleClick,
+	onClick,
 	version,
 }) {
 	return (
-		<CardStyled className={className} onClick={handleClick} version={version}>
+		<CardStyled className={className} onClick={onClick} version={version}>
 			{hasDeleteButton && (
 				<button
 					className="delete-button"

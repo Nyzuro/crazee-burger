@@ -13,6 +13,7 @@ export default function OrderPage() {
 	const [currentTabSelected, setCurrentTabSelected] = useState("add");
 	const [menu, setMenu] = useState(fakeMenu.LARGE);
 	const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+	const [cardClicked, setCardClicked] = useState(null);
 
 	const handleAdd = (newProduct) => {
 		const menuCopy = [...menu];
@@ -54,6 +55,8 @@ export default function OrderPage() {
 		newProduct,
 		setNewProduct,
 		selectTab,
+		cardClicked,
+		setCardClicked,
 	};
 
 	return (
