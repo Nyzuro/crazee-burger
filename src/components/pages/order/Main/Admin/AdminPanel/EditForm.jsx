@@ -8,7 +8,7 @@ import ImagePreview from "./ImagePreview";
 import { getInputsConfig } from "./InputsConfig";
 
 export default function EditForm() {
-	const { cardClicked, menu, setMenu } = useContext(OrderContext);
+	const { cardClicked, menu, setMenu, titleInputRef } = useContext(OrderContext);
 
 	const getProductInfo = (id) => {
 		return menu.filter((product) => product.id === id)[0];
@@ -49,6 +49,7 @@ export default function EditForm() {
 							return (
 								<TextInput
 									key={input.id}
+									ref={input.id === 1 ? titleInputRef : null}
 									{...input}
 									value={productInfo[input.name]}
 									version="minimalist"

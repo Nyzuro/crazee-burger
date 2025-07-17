@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
@@ -14,6 +14,7 @@ export default function OrderPage() {
 	const [menu, setMenu] = useState(fakeMenu.LARGE);
 	const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 	const [cardClicked, setCardClicked] = useState(null);
+	const titleInputRef = useRef(null);
 
 	const handleAdd = (newProduct) => {
 		const menuCopy = [...menu];
@@ -57,6 +58,7 @@ export default function OrderPage() {
 		selectTab,
 		cardClicked,
 		setCardClicked,
+		titleInputRef,
 	};
 
 	return (
