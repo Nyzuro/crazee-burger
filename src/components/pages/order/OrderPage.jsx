@@ -14,6 +14,7 @@ export default function OrderPage() {
 	const [menu, setMenu] = useState(fakeMenu.LARGE);
 	const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 	const [cardClicked, setCardClicked] = useState(null);
+	const [productInfo, setProductInfo] = useState(null);
 	const titleInputRef = useRef(null);
 
 	const handleAdd = (newProduct) => {
@@ -59,6 +60,8 @@ export default function OrderPage() {
 		cardClicked,
 		setCardClicked,
 		titleInputRef,
+		productInfo,
+		setProductInfo,
 	};
 
 	return (

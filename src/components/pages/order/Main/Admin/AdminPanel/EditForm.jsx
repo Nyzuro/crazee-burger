@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { HiCursorClick } from "react-icons/hi";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
@@ -8,13 +8,9 @@ import ImagePreview from "./ImagePreview";
 import { getInputsConfig } from "./InputsConfig";
 
 export default function EditForm() {
-	const { cardClicked, menu, setMenu, titleInputRef } = useContext(OrderContext);
+	const { cardClicked, productInfo, setMenu, titleInputRef, setProductInfo } =
+		useContext(OrderContext);
 
-	const getProductInfo = (id) => {
-		return menu.filter((product) => product.id === id)[0];
-	};
-
-	const [productInfo, setProductInfo] = useState(getProductInfo(cardClicked));
 	const inputs = cardClicked && getInputsConfig(productInfo);
 
 	const handleChange = (event) => {
