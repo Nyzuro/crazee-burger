@@ -28,6 +28,6 @@ export default createContext({
 
 	titleInputRef: { current: null },
 
-	productInfo: {},
-	setProductInfo: () => {},
+	productSelected: {},
+	setProductSelected: () => {},
 });

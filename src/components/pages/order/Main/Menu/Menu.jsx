@@ -17,7 +17,7 @@ export default function Menu() {
 		setCardClicked,
 		selectTab,
 		titleInputRef,
-		setProductInfo,
+		setProductSelected,
 	} = useContext(OrderContext);
 
 	const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
@@ -31,7 +31,7 @@ export default function Menu() {
 
 		selectTab("edit");
 
-		setProductInfo(getProductInfo(id));
+		setProductSelected(getProductInfo(id));
 
 		setTimeout(() => {
 			titleInputRef.current?.focus();

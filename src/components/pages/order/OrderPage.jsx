@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../context/OrderContext";
+import { EMPTY_PRODUCT } from "../../../enums/product";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
 import { theme } from "../../../theme";
-import { EMPTY_PRODUCT } from "./Main/Admin/AdminPanel/AddForm";
 import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
 
@@ -14,7 +14,7 @@ export default function OrderPage() {
 	const [menu, setMenu] = useState(fakeMenu.LARGE);
 	const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 	const [cardClicked, setCardClicked] = useState(null);
-	const [productInfo, setProductInfo] = useState(null);
+	const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
 	const titleInputRef = useRef(null);
 
 	const handleAdd = (newProduct) => {
@@ -60,8 +60,8 @@ export default function OrderPage() {
 		cardClicked,
 		setCardClicked,
 		titleInputRef,
-		productInfo,
-		setProductInfo,
+		productSelected,
+		setProductSelected,
 	};
 
 	return (

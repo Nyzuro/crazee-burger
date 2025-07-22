@@ -8,20 +8,20 @@ import ImagePreview from "./ImagePreview";
 import { getInputsConfig } from "./InputsConfig";
 
 export default function EditForm() {
-	const { cardClicked, productInfo, setMenu, titleInputRef, setProductInfo } =
+	const { cardClicked, productSelected, setMenu, titleInputRef, setProductSelected } =
 		useContext(OrderContext);
 
-	const inputs = cardClicked && getInputsConfig(productInfo);
+	const inputs = cardClicked && getInputsConfig(productSelected);
 
 	const handleChange = (event) => {
 		const { name, value } = event.target;
 
 		const updatedProduct = {
-			...productInfo,
+			...productSelected,
 			[name]: value,
 		};
 
-		setProductInfo(updatedProduct);
+		setProductSelected(updatedProduct);
 
 		setMenu((menu) =>
 			menu.map((product) =>
@@ -36,8 +36,8 @@ export default function EditForm() {
 				<form action="">
 					<ImagePreview
 						className="image-preview"
-						imageSource={productInfo.imageSource}
-						title={productInfo.title}
+						imageSource={productSelected.imageSource}
+						title={productSelected.title}
 					/>
 
 					<div className="input-fields">
@@ -47,7 +47,7 @@ export default function EditForm() {
 									key={input.id}
 									ref={input.id === 1 ? titleInputRef : null}
 									{...input}
-									value={productInfo[input.name]}
+									value={productSelected[input.name]}
 									version="minimalist"
 									onChange={handleChange}
 								/>

@@ -6,13 +6,7 @@ import TextInput from "../../../../../reusable-ui/TextInput";
 import ImagePreview from "./ImagePreview";
 import { getInputsConfig } from "./InputsConfig";
 import SubmitMessage from "./SubmitMessage";
-
-export const EMPTY_PRODUCT = {
-	id: "",
-	title: "",
-	imageSource: "",
-	price: 0,
-};
+import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 
 export default function AddForm() {
 	const [isSubmitted, setIsSubmitted] = useState(false);
