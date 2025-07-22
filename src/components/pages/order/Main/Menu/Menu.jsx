@@ -26,6 +26,7 @@ export default function Menu() {
 		cardClicked === idProductClicked
 			? setCardClicked(null)
 			: setCardClicked(idProductClicked);
+
 		selectTab("edit");
 
 		const productSelected = menu.find((product) => product.id === idProductClicked);
@@ -36,7 +37,7 @@ export default function Menu() {
 		}, 0);
 	};
 
-	if (menu.length == 0) {
+	if (menu.length === 0) {
 		return isModeAdmin ? (
 			<EmptyMenuAdmin resetMenu={resetMenu} classname="page-without-product" />
 		) : (

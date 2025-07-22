@@ -8,8 +8,14 @@ import ImagePreview from "./ImagePreview";
 import { getInputsConfig } from "./InputsConfig";
 
 export default function EditForm() {
-	const { cardClicked, productSelected, setMenu, titleInputRef, setProductSelected } =
-		useContext(OrderContext);
+	const {
+		cardClicked,
+		productSelected,
+		handleEdit,
+		titleInputRef,
+		setProductSelected,
+		menu,
+	} = useContext(OrderContext);
 
 	const inputs = cardClicked && getInputsConfig(productSelected);
 
@@ -23,11 +29,7 @@ export default function EditForm() {
 
 		setProductSelected(updatedProduct);
 
-		setMenu((menu) =>
-			menu.map((product) =>
-				product.id === updatedProduct.id ? { ...updatedProduct } : product
-			)
-		);
+		handleEdit(updatedProduct);
 	};
 
 	return (
