@@ -22,16 +22,14 @@ export default function Menu() {
 
 	const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
-	const getProductInfo = (id) => {
-		return menu.filter((product) => product.id === id)[0];
-	};
-
-	const handleClick = (id) => {
-		cardClicked === id ? setCardClicked(null) : setCardClicked(id);
-
+	const handleClick = (idProductClicked) => {
+		cardClicked === idProductClicked
+			? setCardClicked(null)
+			: setCardClicked(idProductClicked);
 		selectTab("edit");
 
-		setProductSelected(getProductInfo(id));
+		const productSelected = menu.find((product) => product.id === idProductClicked);
+		setProductSelected(productSelected);
 
 		setTimeout(() => {
 			titleInputRef.current?.focus();
