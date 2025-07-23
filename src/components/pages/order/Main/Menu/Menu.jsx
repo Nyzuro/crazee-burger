@@ -37,6 +37,11 @@ export default function Menu() {
 		}, 0);
 	};
 
+	const handleCardDelete = (event, id) => {
+		event.stopPropagation();
+		handleDelete(id);
+	};
+
 	if (menu.length === 0) {
 		return isModeAdmin ? (
 			<EmptyMenuAdmin resetMenu={resetMenu} classname="page-without-product" />
@@ -62,7 +67,7 @@ export default function Menu() {
 						title={title}
 						leftDescription={formatPrice(price)}
 						hasDeleteButton={isModeAdmin}
-						handleDelete={() => handleDelete(id)}
+						handleDelete={(event) => handleCardDelete(event, id)}
 						onClick={() => handleClick(id)}
 						isHoverable={isModeAdmin}
 					/>
