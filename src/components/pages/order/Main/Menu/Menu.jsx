@@ -50,7 +50,6 @@ export default function Menu() {
 			{menu.map(({ id, title, imageSource, price }) => {
 				return (
 					<Card
-						className={isModeAdmin && "admin-card"}
 						version={
 							isModeAdmin
 								? cardClicked === id
@@ -65,6 +64,7 @@ export default function Menu() {
 						hasDeleteButton={isModeAdmin}
 						handleDelete={() => handleDelete(id)}
 						onClick={() => handleClick(id)}
+						isHoverable={isModeAdmin}
 					/>
 				);
 			})}
@@ -83,12 +83,5 @@ const MenuStyled = styled.div`
 	overflow-y: scroll;
 	&::-webkit-scrollbar {
 		display: none;
-	}
-
-	.admin-card:hover {
-		border: 1px solid ${theme.colors.primary};
-		transform: scale(1.05);
-		transition: all 200ms ease-out;
-		box-shadow: 0 0 10px ${theme.colors.primary}, ${theme.shadows.medium};
 	}
 `;
