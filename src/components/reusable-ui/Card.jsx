@@ -40,8 +40,9 @@ export default function Card({
 
 const CardStyled = styled.div`
 	box-shadow: ${theme.shadows.medium};
-	width: 200px;
-	height: 300px;
+	box-sizing: border-box;
+	width: 240px;
+	height: 330px;
 	padding: ${theme.spacing.md};
 	padding-bottom: 10px;
 	display: grid;
