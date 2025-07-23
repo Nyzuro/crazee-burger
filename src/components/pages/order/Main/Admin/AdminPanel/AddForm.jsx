@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
+import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 import Button from "../../../../../reusable-ui/Button";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import ImagePreview from "./ImagePreview";
 import { getInputsConfig } from "./InputsConfig";
 import SubmitMessage from "./SubmitMessage";
-import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 
 export default function AddForm() {
 	const [isSubmitted, setIsSubmitted] = useState(false);
