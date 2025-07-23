@@ -23,18 +23,22 @@ export default function Menu() {
 	const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
 	const handleClick = (idProductClicked) => {
-		cardClicked === idProductClicked
-			? setCardClicked(null)
-			: setCardClicked(idProductClicked);
+		if (isModeAdmin) {
+			cardClicked === idProductClicked
+				? setCardClicked(null)
+				: setCardClicked(idProductClicked);
 
-		selectTab("edit");
+			selectTab("edit");
 
-		const productClickedOn = menu.find((product) => product.id === idProductClicked);
-		setProductSelected(productClickedOn);
+			const productClickedOn = menu.find(
+				(product) => product.id === idProductClicked
+			);
+			setProductSelected(productClickedOn);
 
-		setTimeout(() => {
-			titleInputRef.current?.focus();
-		}, 0);
+			setTimeout(() => {
+				titleInputRef.current?.focus();
+			}, 0);
+		}
 	};
 
 	const handleCardDelete = (event, id) => {
