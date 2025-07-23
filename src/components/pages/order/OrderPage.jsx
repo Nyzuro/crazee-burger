@@ -4,6 +4,7 @@ import OrderContext from "../../../context/OrderContext";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
 import { theme } from "../../../theme";
+import { deepClone } from "../../../utils/array";
 import Main from "./Main/Main";
 import Navbar from "./Navbar/Navbar";
 
@@ -18,7 +19,7 @@ export default function OrderPage() {
 	const titleInputRef = useRef(null);
 
 	const handleAdd = (newProduct) => {
-		const menuCopy = [...menu];
+		const menuCopy = deepClone(menu);
 
 		const updatedMenu = [newProduct, ...menuCopy];
 
@@ -26,7 +27,7 @@ export default function OrderPage() {
 	};
 
 	const handleDelete = (productId) => {
-		const menuCopy = [...menu];
+		const menuCopy = deepClone(menu);
 
 		const updatedMenu = menuCopy.filter((product) => product.id !== productId);
 
@@ -34,7 +35,7 @@ export default function OrderPage() {
 	};
 
 	const handleEdit = (updatedProduct) => {
-		const menuCopy = JSON.parse(JSON.stringify(menu));
+		const menuCopy = deepClone(menu);
 
 		const indexOfUpdatedProduct = menu.findIndex(
 			(menuProduct) => menuProduct.id === updatedProduct.id
