@@ -29,8 +29,8 @@ export default function Menu() {
 
 		selectTab("edit");
 
-		const productSelected = menu.find((product) => product.id === idProductClicked);
-		setProductSelected(productSelected);
+		const productClickedOn = menu.find((product) => product.id === idProductClicked);
+		setProductSelected(productClickedOn);
 
 		setTimeout(() => {
 			titleInputRef.current?.focus();
