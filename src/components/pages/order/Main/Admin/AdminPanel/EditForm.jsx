@@ -43,9 +43,8 @@ export default function EditForm() {
 					return (
 						<TextInput
 							key={input.id}
-							ref={input.id === 1 ? titleInputRef : null}
+							ref={input.name === "title" ? titleInputRef : null}
 							{...input}
-							value={productSelected[input.name]}
 							version="minimalist"
 							onChange={handleChange}
 						/>

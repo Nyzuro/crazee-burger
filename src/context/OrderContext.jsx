@@ -27,7 +27,7 @@ export default createContext({
 	cardClicked: 1,
 	setCardClicked: () => {},
 
-	titleInputRef: { current: null },
+	titleInputRef: {},
 
 	productSelected: {},
 	setProductSelected: () => {},

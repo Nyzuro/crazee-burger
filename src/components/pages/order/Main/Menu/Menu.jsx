@@ -22,22 +22,20 @@ export default function Menu() {
 
 	const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
-	const handleClick = (idProductClicked) => {
+	const handleClick = async (idProductClicked) => {
 		if (isModeAdmin) {
 			cardClicked === idProductClicked
-				? setCardClicked(null)
-				: setCardClicked(idProductClicked);
+				? await setCardClicked(null)
+				: await setCardClicked(idProductClicked);
 
 			selectTab("edit");
 
 			const productClickedOn = menu.find(
 				(product) => product.id === idProductClicked
 			);
-			setProductSelected(productClickedOn);
+			await setProductSelected(productClickedOn);
 
-			setTimeout(() => {
-				titleInputRef.current?.focus();
-			}, 0);
+			titleInputRef.current.focus();
 		}
 	};
 
