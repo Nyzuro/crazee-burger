@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
+import { theme } from "../../../../../../theme";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import ImagePreview from "./ImagePreview";
 import { getInputsConfig } from "./InputsConfig";
@@ -50,6 +51,13 @@ export default function EditForm() {
 					);
 				})}
 			</div>
+
+			<div className="submit">
+				<span className="sentence">
+					Cliquer sur un produit du menu pour le modifier{" "}
+					<span className="live-update">en temps réel</span>
+				</span>
+			</div>
 		</EditFormStyled>
 	);
 }
@@ -67,5 +75,21 @@ const EditFormStyled = styled.form`
 		display: grid;
 		grid-area: 1 / 2 / 2 / 3;
 		grid-row-gap: 8px;
+	}
+
+	.submit {
+		grid-area: 2 / 2 / -2 / 3;
+		display: flex;
+		align-items: center;
+		position: relative;
+		top: 3px;
+
+		.sentence {
+			color: ${theme.colors.primary};
+			font-size: ${theme.fonts.size.SM};
+			.live-update {
+				text-decoration: underline;
+			}
+		}
 	}
 `;
