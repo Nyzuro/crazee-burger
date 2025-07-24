@@ -2,7 +2,6 @@ import { useContext } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
 import TextInput from "../../../../../reusable-ui/TextInput";
-import HintMessage from "./HintMessage";
 import ImagePreview from "./ImagePreview";
 import { getInputsConfig } from "./InputsConfig";
 
@@ -30,7 +29,7 @@ export default function EditForm() {
 		handleEdit(updatedProduct);
 	};
 
-	return cardClicked ? (
+	return (
 		<EditFormStyled>
 			<ImagePreview
 				className="image-preview"
@@ -52,8 +51,6 @@ export default function EditForm() {
 				})}
 			</div>
 		</EditFormStyled>
-	) : (
-		<HintMessage />
 	);
 }
 

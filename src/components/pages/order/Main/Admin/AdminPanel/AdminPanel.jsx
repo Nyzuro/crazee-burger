@@ -5,9 +5,9 @@ import { theme } from "../../../../../../theme";
 import { getTabsConfig, getTabSelected } from "../getTabsConfig";
 
 export default function AdminPanel() {
-	const { currentTabSelected } = useContext(OrderContext);
+	const { currentTabSelected, cardClicked } = useContext(OrderContext);
 
-	const tabs = getTabsConfig(currentTabSelected);
+	const tabs = getTabsConfig(cardClicked);
 	const tabSelected = getTabSelected(tabs, currentTabSelected);
 
 	return (

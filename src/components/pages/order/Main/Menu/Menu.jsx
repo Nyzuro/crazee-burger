@@ -42,6 +42,8 @@ export default function Menu() {
 	const handleCardDelete = (event, id) => {
 		event.stopPropagation();
 		handleDelete(id);
+		id === cardClicked && setCardClicked(null);
+		titleInputRef.current.focus();
 	};
 
 	if (menu.length === 0) {
